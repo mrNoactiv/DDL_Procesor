@@ -1,4 +1,3 @@
 ﻿  stdafx.cpp
   DDL_Procesor.cpp
-  DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\Debug\DDL_Procesor.exe
-  DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\Debug\DDL_Procesor.pdb (Full PDB)
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ddl_procesor.cpp(5): fatal error C1083: Cannot open include file: 'dstruct/paged/b+tree/cB+Tree.h': No such file or directory

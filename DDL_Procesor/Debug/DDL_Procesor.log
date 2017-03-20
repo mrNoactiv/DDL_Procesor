@@ -379,17 +379,6 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeNode_
               TKey=common::datatype::tuple::cTuple
           ]
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeNode_rebuild.h(759): warning C4800: 'dstruct::paged::core::sItemBuffers *': forcing value to bool 'true' or 'false' (performance warning)
-D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeItemStream.h(113): warning C4244: 'initializing': conversion from 'common::llong' to 'unsigned int', possible loss of data
-  D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeItemStream.h(112): note: while compiling class template member function 'bool dstruct::paged::core::cTreeItemStream<TKey>::Add(const TKey &,const char *)'
-          with
-          [
-              TKey=cUInt
-          ]
-  D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/b+tree/cCommonB+Tree.h(1117): note: see reference to function template instantiation 'bool dstruct::paged::core::cTreeItemStream<TKey>::Add(const TKey &,const char *)' being compiled
-          with
-          [
-              TKey=cUInt
-          ]
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(745): warning C4244: '=': conversion from 'double' to 'unsigned int', possible loss of data
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(722): note: while compiling class template member function 'double common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::VolumeNTuple(const char *,const char *,const common::datatype::tuple::cSpaceDescriptor *)'
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(710): note: see reference to function template instantiation 'double common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::VolumeNTuple(const char *,const char *,const common::datatype::tuple::cSpaceDescriptor *)' being compiled
@@ -481,6 +470,17 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeNode_
           with
           [
               TKey=common::datatype::tuple::cTuple
+          ]
+D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeItemStream.h(113): warning C4244: 'initializing': conversion from 'common::llong' to 'unsigned int', possible loss of data
+  D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeItemStream.h(112): note: while compiling class template member function 'bool dstruct::paged::core::cTreeItemStream<TKey>::Add(const TKey &,const char *)'
+          with
+          [
+              TKey=cUInt
+          ]
+  D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/b+tree/cCommonB+Tree.h(1117): note: see reference to function template instantiation 'bool dstruct::paged::core::cTreeItemStream<TKey>::Add(const TKey &,const char *)' being compiled
+          with
+          [
+              TKey=cUInt
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(184): warning C4715: 'cTable::CreateTable': not all control paths return a value
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(460): warning C4715: 'cTable::CreateClusteredIndex': not all control paths return a value

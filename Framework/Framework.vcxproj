@@ -328,7 +328,6 @@
     <ClInclude Include="dstruct\paged\rtree\cRTreeNode.h" />
     <ClInclude Include="dstruct\paged\rtree\cRTreeNodeHeader.h" />
     <ClInclude Include="dstruct\paged\rtree\cRTreeNode_Gpu.h" />
-    <ClInclude Include="dstruct\paged\rtree\cRTreeOrderIndex.h" />
     <ClInclude Include="dstruct\paged\rtree\cRTreeSignatureIndex.h" />
     <ClInclude Include="dstruct\paged\rtree\cSignatureController.h" />
     <ClInclude Include="dstruct\paged\rtree\cSignatureKey.h" />

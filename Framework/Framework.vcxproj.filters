@@ -593,9 +593,6 @@
     <ClInclude Include="dstruct\paged\rtree\cRTreeNodeHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dstruct\paged\rtree\cRTreeOrderIndex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="dstruct\paged\rtree\cRTreeSignatureIndex.h">
       <Filter>Header Files</Filter>
     </ClInclude>

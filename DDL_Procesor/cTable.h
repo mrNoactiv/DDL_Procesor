@@ -306,7 +306,7 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 					tuple->SetValue(1, i - 1, indexKeySD);
 
 
-					//index->mIndex->Insert(*tuple, tuple->GetData());
+					//index->mIndex->Insert(*tuple, tuple->GetData());//error copy
 				}
 				indexesVarLenRTree->push_back(index);
 				return true;

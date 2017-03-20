@@ -261,11 +261,12 @@ bool cRTreeOrderIndex<TKey>::InsertOrUpdateTuple(tNodeIndex nodeIndex, const TKe
 template<class TKey>
 cTuple* cRTreeOrderIndex<TKey>::GetTuple(tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const
 {
-	uint indexID, positionID;
+	/*uint indexID, positionID;
 	GetTupleIndex(nodeIndex, indexID, positionID);
 	bool ret = mOrderArray->GetItem(indexID, positionID, mTmpTuple->GetData());
 	//mTmpTuple->Print("\n", sd);
-	return mTmpTuple;
+	return mTmpTuple;*/
+	return NULL;
 }
 
 /// Get tuple indexes (indexID and positionID)
@@ -295,10 +296,10 @@ void cRTreeOrderIndex<TKey>::PrintInfo()
 template<class TKey>
 void cRTreeOrderIndex<TKey>::PrintFT (tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const
 {
-	TKey *firstTuple = new TKey(sd);
-	*(firstTuple) = *(GetTuple(nodeIndex, sd));
-	printf("FT:");
-	firstTuple->Print("\n", sd);
+//	TKey *firstTuple = new TKey(sd);
+	//*(firstTuple) = *(GetTuple(nodeIndex, sd));
+	//printf("FT:");
+	//firstTuple->Print("\n", sd);
 }
 /**/
 }}}

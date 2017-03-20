@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{520A0776-1FD7-4CE0-9318-589DF22BC6AC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Framework</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Framework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Framework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Framework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Framework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="common\cBitArray.cpp" />
+    <ClCompile Include="common\cBitString.cpp" />
+    <ClCompile Include="common\cCommon.cpp" />
+    <ClCompile Include="common\cFastBitArray.cpp" />
+    <ClCompile Include="common\cMemory.cpp" />
+    <ClCompile Include="common\cNumber.cpp" />
+    <ClCompile Include="common\compression\cCoderCommon.cpp" />
+    <ClCompile Include="common\compression\Coder.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderEliasDelta.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderEliasFibonacci.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFastEliasDelta.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFastEliasFibonacci.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFastFibonacci2.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFastFibonacci3.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFibonacci2.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFibonacci3.cpp" />
+    <ClCompile Include="common\compression\cUniversalCoderFixedLength.cpp" />
+    <ClCompile Include="common\cSignature.cpp" />
+    <ClCompile Include="common\datatype\cBasicType.cpp" />
+    <ClCompile Include="common\datatype\cDataType.cpp" />
+    <ClCompile Include="common\datatype\cDTDescriptor.cpp" />
+    <ClCompile Include="common\datatype\tuple\cHNTuple.cpp" />
+    <ClCompile Include="common\datatype\tuple\cMbrSideSizeOrder.cpp" />
+    <ClCompile Include="common\datatype\tuple\cSpaceDescriptor.cpp" />
+    <ClCompile Include="common\datatype\tuple\cTuple.cpp" />
+    <ClCompile Include="common\memdatstruct\cBlockLinkedList.cpp" />
+    <ClCompile Include="common\memdatstruct\cHeapMemoryBlock.cpp" />
+    <ClCompile Include="common\memdatstruct\cMemoryBlock.cpp" />
+    <ClCompile Include="common\memdatstruct\cMemoryManager.cpp" />
+    <ClCompile Include="common\memdatstruct\MeteredSection.cpp" />
+    <ClCompile Include="common\memorystructures\cArray.cpp" />
+    <ClCompile Include="common\random\cExponentialRandomGenerator.cpp" />
+    <ClCompile Include="common\random\cGaussRandomGenerator.cpp" />
+    <ClCompile Include="common\random\cUniformRandomGenerator.cpp" />
+    <ClCompile Include="common\stream\cCharStream.cpp" />
+    <ClCompile Include="common\stream\cFileStream.cpp" />
+    <ClCompile Include="common\utils\cCounter.cpp" />
+    <ClCompile Include="common\utils\cHistogram.cpp" />
+    <ClCompile Include="common\utils\cMemCheckUtil.cpp" />
+    <ClCompile Include="common\utils\cTimer.cpp" />
+    <ClCompile Include="dstruct\paged\core\cBucketHeader.cpp" />
+    <ClCompile Include="dstruct\paged\core\cBucketHeaderStorage.cpp" />
+    <ClCompile Include="dstruct\paged\core\cCacheStatistics.cpp" />
+    <ClCompile Include="dstruct\paged\core\cDStructHeader.cpp" />
+    <ClCompile Include="dstruct\paged\core\cItemBufferedSequentialStream.cpp" />
+    <ClCompile Include="dstruct\paged\core\cMemoryPool.cpp" />
+    <ClCompile Include="dstruct\paged\core\cNode.cpp" />
+    <ClCompile Include="dstruct\paged\core\cNodeCache.cpp" />
+    <ClCompile Include="dstruct\paged\core\cNodeHeader.cpp" />
+    <ClCompile Include="dstruct\paged\core\cQueryStatistics.cpp" />
+    <ClCompile Include="dstruct\paged\core\cQuickDB.cpp" />
+    <ClCompile Include="dstruct\paged\core\cTreeHeader.cpp" />
+    <ClCompile Include="dstruct\paged\core\cTreeNodeHeader.cpp" />
+    <ClCompile Include="dstruct\paged\cuda\cCudaTimer.cpp" />
+    <ClCompile Include="dstruct\paged\cuda\cGpuConst.cpp" />
+    <ClCompile Include="dstruct\paged\cuda\cMemoryManagerCuda.cpp" />
+    <ClCompile Include="dstruct\paged\queryprocessing\cQueryProcStat.cpp" />
+    <ClCompile Include="dstruct\paged\queryprocessing\cRangeQueryConfig.cpp" />
+    <ClCompile Include="dstruct\paged\queryprocessing\cRangeQueryContext.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cCommonRTree.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cRTreeHeader.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cRTreeLog.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cSignatureController.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cSignatureKey.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cSignatureRecord.cpp" />
+    <ClCompile Include="dstruct\paged\rtree\cSignatureStorage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common\cBitArray.h" />
+    <ClInclude Include="common\cBitString.h" />
+    <ClInclude Include="common\cBitStringNew.h" />
+    <ClInclude Include="common\cCommon.h" />
+    <ClInclude Include="common\cFastBitArray.h" />
+    <ClInclude Include="common\cMemory.h" />
+    <ClInclude Include="common\cNumber.h" />
+    <ClInclude Include="common\compression\cCoderCommon.h" />
+    <ClInclude Include="common\compression\cEliasDeltaDecodeTab.h" />
+    <ClInclude Include="common\compression\cEliasDeltaEncodeTab.h" />
+    <ClInclude Include="common\compression\cEliasFibonacciDecodeTab.h" />
+    <ClInclude Include="common\compression\cEliasFibonacciEncodeTab.h" />
+    <ClInclude Include="common\compression\cFibonacci2.h" />
+    <ClInclude Include="common\compression\cFibonacci2DecodeTab.h" />
+    <ClInclude Include="common\compression\cFibonacci2EncodeTab.h" />
+    <ClInclude Include="common\compression\cFibonacci3.h" />
+    <ClInclude Include="common\compression\cFibonacci3DecodeTab.h" />
+    <ClInclude Include="common\compression\cFibonacci3EncodeTab.h" />
+    <ClInclude Include="common\compression\Coder.h" />
+    <ClInclude Include="common\compression\cUniversalCoderEliasDelta.h" />
+    <ClInclude Include="common\compression\cUniversalCoderEliasFibonacci.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFastEliasDelta.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFastEliasFibonacci.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFastFibonacci2.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFastFibonacci3.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFibonacci2.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFibonacci3.h" />
+    <ClInclude Include="common\compression\cUniversalCoderFixedLength.h" />
+    <ClInclude Include="common\cSignature.h" />
+    <ClInclude Include="common\datatype\cBasicType.h" />
+    <ClInclude Include="common\datatype\cDataType.h" />
+    <ClInclude Include="common\datatype\cDTDescriptor.h" />
+    <ClInclude Include="common\datatype\tuple\cCommonNTuple.h" />
+    <ClInclude Include="common\datatype\tuple\cHNTuple.h" />
+    <ClInclude Include="common\datatype\tuple\cMBRectangle.h" />
+    <ClInclude Include="common\datatype\tuple\cMBRectangle_AVX.h" />
+    <ClInclude Include="common\datatype\tuple\cMBRectangle_SSE.h" />
+    <ClInclude Include="common\datatype\tuple\cMbrSideSizeOrder.h" />
+    <ClInclude Include="common\datatype\tuple\cSpaceDescriptor.h" />
+    <ClInclude Include="common\datatype\tuple\cTuple.h" />
+    <ClInclude Include="common\data\cDataCollection.h" />
+    <ClInclude Include="common\data\cTuplesGenerator.h" />
+    <ClInclude Include="common\memdatstruct\cBlockLinkedList.h" />
+    <ClInclude Include="common\memdatstruct\cHeapMemoryBlock.h" />
+    <ClInclude Include="common\memdatstruct\cMemoryBlock.h" />
+    <ClInclude Include="common\memdatstruct\cMemoryManager.h" />
+    <ClInclude Include="common\memdatstruct\MeteredSection.h" />
+    <ClInclude Include="common\memorystructures\cArray.h" />
+    <ClInclude Include="common\memorystructures\cHashTable.h" />
+    <ClInclude Include="common\memorystructures\cLinkedList.h" />
+    <ClInclude Include="common\memorystructures\cStack.h" />
+    <ClInclude Include="common\random\cExponentialRandomGenerator.h" />
+    <ClInclude Include="common\random\cGaussRandomGenerator.h" />
+    <ClInclude Include="common\random\cUniformRandomGenerator.h" />
+    <ClInclude Include="common\stream\cCharStream.h" />
+    <ClInclude Include="common\stream\cFileStream.h" />
+    <ClInclude Include="common\stream\cStream.h" />
+    <ClInclude Include="common\utils\cCounter.h" />
+    <ClInclude Include="common\utils\cHistogram.h" />
+    <ClInclude Include="common\utils\cMemCheckUtil.h" />
+    <ClInclude Include="common\utils\cSSEUtils.h" />
+    <ClInclude Include="common\utils\cTimer.h" />
+    <ClInclude Include="dstruct\cPersistentArray.h" />
+    <ClInclude Include="dstruct\paged\core\cBucketHeader.h" />
+    <ClInclude Include="dstruct\paged\core\cBucketHeaderStorage.h" />
+    <ClInclude Include="dstruct\paged\core\cBulkLoad.h" />
+    <ClInclude Include="dstruct\paged\core\cBulkLoadArray.h" />
+    <ClInclude Include="dstruct\paged\core\cCacheStatistics.h" />
+    <ClInclude Include="dstruct\paged\core\cDataStructureContext.h" />
+    <ClInclude Include="dstruct\paged\core\cDSCriticalException.h" />
+    <ClInclude Include="dstruct\paged\core\cDSFalseSetupException.h" />
+    <ClInclude Include="dstruct\paged\core\cDStructConst.h" />
+    <ClInclude Include="dstruct\paged\core\cDStructHeader.h" />
+    <ClInclude Include="dstruct\paged\core\cItemBufferedSequentialStream.h" />
+    <ClInclude Include="dstruct\paged\core\cItemStream.h" />
+    <ClInclude Include="dstruct\paged\core\cMemoryPool.h" />
+    <ClInclude Include="dstruct\paged\core\cNode.h" />
+    <ClInclude Include="dstruct\paged\core\cNodeBuffers.h" />
+    <ClInclude Include="dstruct\paged\core\cNodeCache.h" />
+    <ClInclude Include="dstruct\paged\core\cNodeHeader.h" />
+    <ClInclude Include="dstruct\paged\core\cNodeItem.h" />
+    <ClInclude Include="dstruct\paged\core\cObjTreeItem.h" />
+    <ClInclude Include="dstruct\paged\core\cPagedTree.h" />
+    <ClInclude Include="dstruct\paged\core\cQueryResult.h" />
+    <ClInclude Include="dstruct\paged\core\cQueryStatistics.h" />
+    <ClInclude Include="dstruct\paged\core\cQuickDB.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeHeader.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeItemStream.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeNode.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeNodeHeader.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeNode_coding.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeNode_rebuild.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeNode_ri.h" />
+    <ClInclude Include="dstruct\paged\core\cTreeNode_SubNode.h" />
+    <ClInclude Include="dstruct\paged\cuda\cCudaParams.h" />
+    <ClInclude Include="dstruct\paged\cuda\cCudaTimer.h" />
+    <ClInclude Include="dstruct\paged\cuda\cGpuConst.h" />
+    <ClInclude Include="dstruct\paged\cuda\cMemoryManagerCuda.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cDbfsLevel.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cQueryProcStat.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryConfig.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryConfig_Gpu.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryConfig_Phi.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryContext.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryProcessor.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryProcessorConstants.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryProcessor_Gpu.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRangeQueryProcessor_Phi.h" />
+    <ClInclude Include="dstruct\paged\queryprocessing\cRQBuffers.h" />
+    <ClInclude Include="dstruct\paged\rtree\cCommonRTree.h" />
+    <ClInclude Include="dstruct\paged\rtree\cCommonRTreeNode.h" />
+    <ClInclude Include="dstruct\paged\rtree\cCommonRTree_Delete.h" />
+    <ClInclude Include="dstruct\paged\rtree\cCommonRTree_Gpu.h" />
+    <ClInclude Include="dstruct\paged\rtree\cCommonRTree_Insert.h" />
+    <ClInclude Include="dstruct\paged\rtree\cCommonRTree_Query.h" />
+    <ClInclude Include="dstruct\paged\rtree\cInsertBuffers.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTree.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeConst.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeHeader.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeLeafNode.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeLeafNodeHeader.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeLeafNode_Gpu.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeLog.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeNode.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeNodeHeader.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeNode_Gpu.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeOrderIndex.h" />
+    <ClInclude Include="dstruct\paged\rtree\cRTreeSignatureIndex.h" />
+    <ClInclude Include="dstruct\paged\rtree\cSignatureController.h" />
+    <ClInclude Include="dstruct\paged\rtree\cSignatureKey.h" />
+    <ClInclude Include="dstruct\paged\rtree\cSignatureRecord.h" />
+    <ClInclude Include="dstruct\paged\rtree\cSignatureStorage.h" />
+    <ClInclude Include="dstruct\paged\rtree\sItemIdRecord.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dstruct\paged\cuda\cCudaCommonKernels.cuh" />
+    <None Include="dstruct\paged\cuda\cCudaGlobalDefs.cuh" />
+    <None Include="dstruct\paged\cuda\cCudaProcessor.cu" />
+    <None Include="dstruct\paged\cuda\cCudaProcessor.cuh" />
+    <None Include="dstruct\paged\cuda\cCudaProcessor35.cu" />
+    <None Include="dstruct\paged\cuda\cCudaProcessor35.cuh" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

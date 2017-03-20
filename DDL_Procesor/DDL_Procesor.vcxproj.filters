@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{70a2d1cd-0ab4-4bdb-bd9a-0177a4e48416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Btree">
+      <UniqueIdentifier>{4348c129-00c2-4bf4-91d8-9fcecb168f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Translators">
+      <UniqueIdentifier>{0a60fcad-2a78-430b-89e1-7f71dd59a848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rtree">
+      <UniqueIdentifier>{2e53dace-2714-4990-9d48-1b52ccda5d63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,13 +36,34 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cCompleteBTree.h">
+      <Filter>Source Files\Btree</Filter>
+    </ClInclude>
+    <ClInclude Include="cTranslatorCreate.h">
+      <Filter>Source Files\Translators</Filter>
+    </ClInclude>
+    <ClInclude Include="cTranslatorIndex.h">
+      <Filter>Source Files\Translators</Filter>
+    </ClInclude>
+    <ClInclude Include="cTypeOfTranslator.h">
+      <Filter>Source Files\Translators</Filter>
+    </ClInclude>
+    <ClInclude Include="cTable.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cColumn.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cCompleteRTree.h">
+      <Filter>Source Files\Rtree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DDL_Procesor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

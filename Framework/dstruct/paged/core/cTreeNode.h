@@ -1311,7 +1311,7 @@ bool cTreeNode<TKey>::AddItem(const char* key, const tNodeIndex &nodeIndex, bool
 	unsigned int freeOrder = mHeader->GetNodeItemsSpaceSize() - mFreeSize;
 	SetItemPOrder(mItemCount, freeOrder);
 	unsigned int keySize = GetNodeHeader()->GetKeySize();
-
+	
 	// since the max size of the item in each inner node, we need this validation
 	// assert (keySize <= TKey::GetSize(key, GetNodeHeader()->GetKeyDescriptor()));
 	assert(keySize <= TKey::GetMaxSize(key, mHeader->GetKeyDescriptor()));     
@@ -1379,6 +1379,9 @@ bool cTreeNode<TKey>::InsertItem(const unsigned int lOrder, const char *item, co
 	cTreeNodeHeader *nodeHeader = GetNodeHeader();
 
 	// since we have the max size of the item in each inner node, we need this validation
+	unsigned int a1 = TKey::GetSize(item, mHeader->GetKeyDescriptor());
+	unsigned int a2 = nodeHeader->GetKeySize();
+
 	assert(!IsLeaf() && nodeHeader->GetKeySize() >= TKey::GetSize(item, mHeader->GetKeyDescriptor()));
 
 	uint itemSize = nodeHeader->GetKeySize() + sizeof(tNodeIndex);

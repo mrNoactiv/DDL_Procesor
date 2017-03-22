@@ -64,7 +64,7 @@ int main()
 	}
 
 
-	string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
+	string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) option:RTREE";
 	//string query = "create table ahoj(ID VARCHAR(50) PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
 
 	cTypeOfTranslator *typeofTranslator = new cTypeOfTranslator();
@@ -88,8 +88,24 @@ int main()
 		cout << "command not found" << endl;
 	}
 
+
+	if (table1->varlen)
+	{
+		for (int i = 0; i < 100000; i++)
+		{
+			table1->SetValues(table1->varGen->CreateNewRecord(), SD);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < 1000; i++)
+		{
+			table1->SetValues(table1->fixGen->CreateNewRecord(), SD);
+		}
+	}
+
 	 //pro 2x int
-	int j = 100;
+	/*int j = 100;
 	int k = 500;
 	for (int i = 0; i < 10000; i++)
 	{
@@ -103,7 +119,7 @@ int main()
 
 		table1->SetValues(haldaTuple, SD);
 
-	}
+	}*/
 	 
 	
 	/*  generator pro varchar*/
@@ -133,14 +149,16 @@ int main()
 	table1->SetValues(haldaTuple, SD);
 
 	}
-	*/
 	
+	*/
 
 
 
 
 
 	//table1->indexesVarLenBTree->at(0)->mIndex->PrintInfo();
+	//table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
+	table1->indexesFixLenRTree->at(0)->mIndex->PrintInfo();
 	/*cTuple *findTuple = new cTuple(SD);
 	findTuple->SetValue(0, 1, SD);
 	

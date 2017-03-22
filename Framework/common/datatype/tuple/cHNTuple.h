@@ -20,45 +20,52 @@ namespace common {
 	namespace datatype {
 		namespace tuple {
 
-class cHNTuple : public cNTuple
-{
-public:
-	static const unsigned int MAX_DIM = 20;
-	static const unsigned int LengthType = cDataType::LENGTH_VARLEN;
+			class cHNTuple : public cNTuple
+			{
+			public:
+				static const unsigned int MAX_DIM = 20;
+				static const unsigned int LengthType = cDataType::LENGTH_VARLEN;
 
-	char * GetData() const;
-	static inline unsigned int GetSizePart(const char *data, unsigned int order, const cSpaceDescriptor* pSd);  //delka, kde zacinaji data order-ty itemu
-	static inline char* GetPValue(const char *data, unsigned int order, const cSpaceDescriptor* pSd);  //adresa, kde zacinaji data order-ty itemu
-	static inline unsigned int GetItemSize(const char *data, unsigned int order, const cSpaceDescriptor* pSd);     //velikost order-ty itemu
-	static inline unsigned int GetItemSizeShift(const char *data, unsigned int order, const cSpaceDescriptor* pSd, unsigned int &byteShift);
-	static inline unsigned int GetDimInnerNTuple(const char *data, unsigned int order, const cSpaceDescriptor* pSd); //jakou dimenzi ma vnitrni tuple
+				char * GetData() const;
+				static inline unsigned int GetSizePart(const char *data, unsigned int order, const cSpaceDescriptor* pSd);  //delka, kde zacinaji data order-ty itemu
+				static inline char* GetPValue(const char *data, unsigned int order, const cSpaceDescriptor* pSd);  //adresa, kde zacinaji data order-ty itemu
+				static inline unsigned int GetItemSize(const char *data, unsigned int order, const cSpaceDescriptor* pSd);     //velikost order-ty itemu
+				static inline unsigned int GetItemSizeShift(const char *data, unsigned int order, const cSpaceDescriptor* pSd, unsigned int &byteShift);
+				static inline unsigned int GetDimInnerNTuple(const char *data, unsigned int order, const cSpaceDescriptor* pSd); //jakou dimenzi ma vnitrni tuple
 
-	inline unsigned int GetSize(const cDTDescriptor* pSd) const;
-	static inline unsigned int GetSize(const char* data, const cDTDescriptor* pSd);
-	static inline unsigned int GetSize(const char* data, const cSpaceDescriptor* pSd);
-	static inline unsigned int GetMaxSize(const char *data, const cDTDescriptor* pSd);
-	static inline unsigned int GetMaxSize(const char *data, const cSpaceDescriptor* pSd);
+				inline unsigned int GetSize(const cDTDescriptor* pSd) const;
+				static inline unsigned int GetSize(const char* data, const cDTDescriptor* pSd);
+				static inline unsigned int GetSize(const char* data, const cSpaceDescriptor* pSd);
+				static inline unsigned int GetMaxSize(const char *data, const cDTDescriptor* pSd);
+				static inline unsigned int GetMaxSize(const char *data, const cSpaceDescriptor* pSd);
 
-	static inline void Copy(char* cHNTuple_dst, const char* cHNTuple_src, const cSpaceDescriptor *pSd);
-	static inline void Copy(char* cHNTuple_dst, const char* cHNTuple_src, const cDTDescriptor* pSd);
+				static inline void Copy(char* cHNTuple_dst, const char* cHNTuple_src, const cSpaceDescriptor *pSd);
+				static inline void Copy(char* cHNTuple_dst, const char* cHNTuple_src, const cDTDescriptor* pSd);
 
-	// static inline unsigned int GetInMemSize(const cSpaceDescriptor* pSd);
+				// static inline unsigned int GetInMemSize(const cSpaceDescriptor* pSd);
 
-	inline void SetValue(unsigned int order, float value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, double value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, int value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, unsigned int value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, unsigned short value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, short value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, uchar value, const cSpaceDescriptor* pSd);
-	//inline void SetValue(unsigned int order, char* value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, const cNTuple& value, const cSpaceDescriptor* pSd);
-	inline void SetValue(unsigned int order, const cLNTuple& value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, float value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, double value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, int value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, unsigned int value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, unsigned short value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, short value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, uchar value, const cSpaceDescriptor* pSd);
+				//inline void SetValue(unsigned int order, char* value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, const cNTuple& value, const cSpaceDescriptor* pSd);
+				inline void SetValue(unsigned int order, const cLNTuple& value, const cSpaceDescriptor* pSd);
 
-	inline void Clear(const cSpaceDescriptor* pSd);
+				inline void Clear(const cSpaceDescriptor* pSd);
 
-	inline int Equal(const char* tuple2, const cSpaceDescriptor* pSd) const;
-	static inline int Equal(const char* cUnfTuple_t1, const char* cUnfTuple_t2, const unsigned int order, const cSpaceDescriptor* pSd);
+				inline int Equal(const char* tuple2, const cSpaceDescriptor* pSd) const;
+				static inline int Equal(const char* cUnfTuple_t1, const char* cUnfTuple_t2, const unsigned int order, const cSpaceDescriptor* pSd);
+				static inline int Equal(const cHNTuple& tuple1,const char* tuple2,const cSpaceDescriptor* psd);//GRU0047
+				static inline int Equal(const cHNTuple& tuple1, const char* tuple2, const cDTDescriptor* psd);//GRU0047
+				static inline int Equal(char * tuple1, const char* tuple2, short order, const cDTDescriptor* psd);//GRU0047
+				static inline int Equal(const char * tuple1, const char* tuple2,  const cDTDescriptor* psd);//gru0047
+
+				inline unsigned int Copy(const char *srcData, const cSpaceDescriptor* pDtD);//gru0047	
+				inline unsigned int Copy(const char *srcData, const cDTDescriptor* pDtD);//gru0047
 
 	void Resize(const cSpaceDescriptor *pSd);
 
@@ -266,6 +273,73 @@ inline void cHNTuple::SetTuple(char* data, const cHNTuple &tuple, const cSpaceDe
 		break;
 	}
 	return ret;
+}
+
+inline int cHNTuple::Equal(const cHNTuple& tuple1, const char* tuple2, const cSpaceDescriptor* psd)//GRU0047
+{
+	const char * tuple = tuple1.GetData();
+	
+	for (int i = 0; i < psd->GetDimension(); i++)
+	{
+		int ret=Equal(tuple, tuple2, i, psd);
+		if (ret == -1 || ret == 1)
+		{
+			return ret;
+			break;
+		}
+	}
+}
+
+inline int cHNTuple::Equal(const cHNTuple & tuple1, const char * tuple2, const cDTDescriptor * psd)//gru0047
+{
+	const char * tuple = tuple1.GetData();
+
+
+	for (int i = 0; i < psd->GetDimension(); i++)
+	{
+		int ret = Equal(tuple, tuple2, i, (cSpaceDescriptor*)psd);
+		if (ret == -1 || ret == 1)
+		{
+			return ret;
+			break;
+		}
+	}
+}
+
+inline int cHNTuple::Equal(char * tuple1, const char * tuple2, short order, const cDTDescriptor * psd)//gru0047
+{
+	const char * tuple = tuple1;
+		int ret = Equal(tuple, tuple2, order, (cSpaceDescriptor*)psd);
+		if (ret == -1 || ret == 1)
+		{
+			return ret;
+		}
+	
+}
+
+inline int cHNTuple::Equal(const char * tuple1, const char * tuple2, const cDTDescriptor * psd)//gru0047
+{
+	for (int i = 0; i < psd->GetDimension(); i++)
+	{
+		int ret = Equal(tuple1, tuple2, i, (cSpaceDescriptor*)psd);
+		if (ret == -1 || ret == 1)
+		{
+			return ret;
+			break;
+		}
+	}
+}
+
+inline unsigned int cHNTuple::Copy(const char * srcData, const cSpaceDescriptor * pDtD)
+{
+	uint size = pDtD->GetSize();
+	memcpy(mData, srcData, size);
+	return size;
+}
+
+inline unsigned int cHNTuple::Copy(const char * srcData, const cDTDescriptor * pDtD)
+{
+	return Copy(srcData, (const cSpaceDescriptor*)pDtD);
 }
 
 

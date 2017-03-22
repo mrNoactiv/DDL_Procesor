@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Rtree">
       <UniqueIdentifier>{2e53dace-2714-4990-9d48-1b52ccda5d63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Generators">
+      <UniqueIdentifier>{c2281165-a12d-4fe5-9219-62c7794f1214}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -56,6 +59,12 @@
     </ClInclude>
     <ClInclude Include="cCompleteRTree.h">
       <Filter>Source Files\Rtree</Filter>
+    </ClInclude>
+    <ClInclude Include="cRecordGeneratorVar.h">
+      <Filter>Source Files\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="cRecordGeneratorFix.h">
+      <Filter>Source Files\Generators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

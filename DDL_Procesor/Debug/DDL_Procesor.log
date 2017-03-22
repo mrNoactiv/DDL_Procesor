@@ -37,6 +37,9 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/rtree/cRTreeCon
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/rtree/cRTreeConst.h(38): warning C4091: 'typedef ': ignored on left of 'Compression::Comp' when no variable is declared
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/rtree/cRTreeConst.h(44): warning C4091: 'typedef ': ignored on left of 'Reduction::Reduce' when no variable is declared
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/rtree/cRTreeConst.h(50): warning C4091: 'typedef ': ignored on left of 'Split::Splits' when no variable is declared
+D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cHNTuple.h(282): warning C4018: '<': signed/unsigned mismatch
+D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cHNTuple.h(298): warning C4018: '<': signed/unsigned mismatch
+D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cHNTuple.h(322): warning C4018: '<': signed/unsigned mismatch
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(51): warning C4091: 'typedef ': ignored on left of 'common::datatype::tuple::Processing::Compare' when no variable is declared
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/data/cDataCollection.h(16): warning C4091: 'typedef ': ignored on left of 'cCollection::Collect' when no variable is declared
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/data/cDataCollection.h(21): warning C4091: 'typedef ': ignored on left of 'Computer::Collect' when no variable is declared
@@ -52,20 +55,28 @@ d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cCompleteBTree.h(13): warn
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cCompleteBTree.h(14): warning C4042: 'INMEMCACHE_SIZE': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cCompleteBTree.h(18): warning C4042: 'inMemCacheSize': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cCompleteBTree.h(24): warning C4042: 'INMEMCACHE_SIZE': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(59): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(60): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(61): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(77): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(94): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(210): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(261): warning C4018: '<=': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(298): warning C4018: '<=': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(333): warning C4018: '<=': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(365): warning C4018: '<=': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(393): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(395): warning C4101: 'keyPosition': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(682): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(716): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorVar.h(45): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorVar.h(44): warning C4101: 'positionInTable': unreferenced local variable
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorVar.h(78): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorVar.h(96): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorFix.h(43): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorFix.h(42): warning C4101: 'positionInTable': unreferenced local variable
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorFix.h(76): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cRecordGeneratorFix.h(94): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(62): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(63): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(64): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(82): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(99): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(224): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(275): warning C4018: '<=': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(312): warning C4018: '<=': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(347): warning C4018: '<=': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(379): warning C4018: '<=': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(407): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(409): warning C4101: 'keyPosition': unreferenced local variable
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(696): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(730): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
 DDL_Procesor.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'common::uint', possible loss of data
 D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/memorystructures/cArray.h(137): warning C4018: '<': signed/unsigned mismatch
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/memorystructures/cArray.h(136): note: while compiling class template member function 'const char cArray<char>::operator [](const int) const'
@@ -80,7 +91,7 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/b+tree/cCommonB
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(343): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(357): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -178,7 +189,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\cRTreeNod
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(271): note: see reference to function template instantiation 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(285): note: see reference to function template instantiation 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -188,7 +199,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\cRTreeNod
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(271): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTree<TKey>' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(285): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTree<TKey>' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -383,7 +394,7 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRect
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(722): note: while compiling class template member function 'double common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::VolumeNTuple(const char *,const char *,const common::datatype::tuple::cSpaceDescriptor *)'
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(710): note: see reference to function template instantiation 'double common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::VolumeNTuple(const char *,const char *,const common::datatype::tuple::cSpaceDescriptor *)' being compiled
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(226): note: while compiling class template member function 'unsigned int common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::GetLSize(common::uint,const common::datatype::cDTDescriptor *)'
-  D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeNode.h(2006): note: see reference to function template instantiation 'unsigned int common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::GetLSize(common::uint,const common::datatype::cDTDescriptor *)' being compiled
+  D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeNode.h(2009): note: see reference to function template instantiation 'unsigned int common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::GetLSize(common::uint,const common::datatype::cDTDescriptor *)' being compiled
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(348): note: while compiling class template member function 'void common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::Resize(const common::datatype::tuple::cSpaceDescriptor *)'
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(221): note: see reference to function template instantiation 'void common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::Resize(const common::datatype::tuple::cSpaceDescriptor *)' being compiled
   D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRectangle.h(220): note: while compiling class template member function 'common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>::cMBRectangle(const common::datatype::tuple::cSpaceDescriptor *)'
@@ -396,7 +407,7 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\common/datatype/tuple/cMBRect
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(343): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\cTable.h(357): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -482,7 +493,10 @@ D:\skola\bakalarka\Aplikace\DDL_Procesor\Framework\dstruct/paged/core/cTreeItemS
           [
               TKey=cUInt
           ]
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(184): warning C4715: 'cTable::CreateTable': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(460): warning C4715: 'cTable::CreateClusteredIndex': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(198): warning C4715: 'cTable::CreateTable': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(474): warning C4715: 'cTable::CreateClusteredIndex': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(307): warning C4715: 'common::datatype::tuple::cHNTuple::Equal': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(318): warning C4715: 'common::datatype::tuple::cHNTuple::Equal': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(331): warning C4715: 'common::datatype::tuple::cHNTuple::Equal': not all control paths return a value
   DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\Debug\DDL_Procesor.exe
   DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\Debug\DDL_Procesor.pdb (Full PDB)

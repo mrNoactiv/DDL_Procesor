@@ -24,6 +24,7 @@ template<class TKey>
 inline bool cCompleteRTree<TKey>::SetRTree(const char* uniqueName, uint blockSize, cSpaceDescriptor *dd, uint keySize, uint dataSize, bool variableLenData, uint dsMode, uint treeCode, uint compressionRatio, unsigned int CODETYPE, unsigned int RUNTIME_MODE, bool HISTOGRAMS, cQuickDB *quickDB)
 {
 	mIndexHeader = new cRTreeHeader<TKey>(dd, dataSize, variableLenData, dsMode, treeCode, compressionRatio);
+	mIndexHeader->SetName(uniqueName);
 	mIndexHeader->SetRuntimeMode(RUNTIME_MODE);
 	mIndexHeader->SetCodeType(CODETYPE);
 	mIndexHeader->SetSignatureEnabled(false);

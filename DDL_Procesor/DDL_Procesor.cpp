@@ -13,7 +13,7 @@
 
 
 
-
+cTable* ValidationTest(cTable *table,string query, cQuickDB *quckdb, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
 int main()
 {
 	/*proměnné*/
@@ -64,45 +64,27 @@ int main()
 	}
 
 
-	string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) option:RTREE";
+	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
 	//string query = "create table ahoj(ID VARCHAR(50) PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
+	
 
-	cTypeOfTranslator *typeofTranslator = new cTypeOfTranslator();
-	typeofTranslator->SetType(query);
-	cTable *table1 = new cTable();
-	cSpaceDescriptor *SD = NULL;
+	cTable *table1=NULL;
+	
+	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) option:BTREE";
+	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
+	//string query = "create table ahoj(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
+	string query = "create table ahoj(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) option:BTREE";
+	table1=ValidationTest(table1,query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	
+	query = "create index index_name ON ahoj(AGE)";
+	table1=ValidationTest(table1, query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	
+	
+	
 
+	
+	
 
-
-	if (typeofTranslator->type == Type::CREATE)
-	{
-		table1->CreateTable(query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-		SD = table1->SD;
-	}
-	else if (typeofTranslator->type == Type::INDEX)
-	{
-		table1->CreateIndex(query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, RUNTIME_MODE, CODETYPE, HISTOGRAMS, INMEMCACHE_SIZE);
-	}
-	else
-	{
-		cout << "command not found" << endl;
-	}
-
-
-	if (table1->varlen)
-	{
-		for (int i = 0; i < 100000; i++)
-		{
-			table1->SetValues(table1->varGen->CreateNewRecord(), SD);
-		}
-	}
-	else
-	{
-		for (int i = 0; i < 1000; i++)
-		{
-			table1->SetValues(table1->fixGen->CreateNewRecord(), SD);
-		}
-	}
 
 	 //pro 2x int
 	/*int j = 100;
@@ -157,8 +139,9 @@ int main()
 
 
 	//table1->indexesVarLenBTree->at(0)->mIndex->PrintInfo();
+	//table1->indexesVarLenRTree->at(0)->mIndex->PrintInfo();
 	//table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
-	table1->indexesFixLenRTree->at(0)->mIndex->PrintInfo();
+	//table1->indexesFixLenRTree->at(0)->mIndex->PrintInfo();
 	/*cTuple *findTuple = new cTuple(SD);
 	findTuple->SetValue(0, 1, SD);
 	
@@ -172,3 +155,57 @@ int main()
 	return 0;
 }
 
+
+cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, const uint inMemCacheSize)
+{
+	cTable *table1 = table;
+	if (table1 == NULL)
+	{
+		table1 = new cTable();
+	}
+
+	
+	cTypeOfTranslator *typeofTranslator = new cTypeOfTranslator();
+	typeofTranslator->SetType(query);
+
+	cSpaceDescriptor *SD = NULL;
+
+
+	if (typeofTranslator->type == Type::CREATE)
+	{
+		table1->CreateTable(query, quckdb, BLOCK_SIZE, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize);
+		SD = table1->SD;
+
+		/*generování záznamů*/
+		if (table1->varlen && table1->homogenous == false)
+		{
+			for (int i = 0; i < 1000; i++)
+			{
+				table1->SetValues(table1->varGen->CreateNewRecord(), SD);
+			}
+		}
+		else
+		{
+			for (int i = 0; i < 1000; i++)
+			{
+				table1->SetValues(table1->fixGen->CreateNewRecord(), SD);
+			}
+		}
+
+
+
+	}
+	else if (typeofTranslator->type == Type::INDEX)
+	{
+		table1->CreateIndex(query, quckdb, BLOCK_SIZE, DSMODE, compressionRatio, runtimeMode, codeType, histograms, inMemCacheSize);
+	}
+	else
+	{
+		cout << "command not found" << endl;
+	}
+
+
+	
+
+	return table1;
+}

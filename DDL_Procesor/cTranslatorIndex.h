@@ -12,6 +12,7 @@ public:
 	string tableName;
 	string columnName;
 
+
 	cTranslatorIndex();
 	void TranslateCreateIndex(string input);
 };

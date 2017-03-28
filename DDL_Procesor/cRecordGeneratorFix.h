@@ -38,6 +38,8 @@ inline cTuple* cRecordGeneratorFix::CreateNewRecord()
 
 	int index = 0;
 
+	
+
 
 	int positionInTable;
 	for (int i = 0; i < columns->size(); i++)
@@ -57,12 +59,28 @@ inline cTuple* cRecordGeneratorFix::CreateNewRecord()
 		}
 		else if (columns->at(i)->cType->GetCode() == 'n')
 		{
+			
+			
 			cNTuple *value = GenerateVarchar(columns->at(i)->size, columns->at(i)->columnSD);
+			
+			
+
 			record->SetValue(i, *value, columnSD);
+			
+			
 		}
 
 	}
 
+	cDataType *typ[] = { new cInt() };//test haldy
+	cSpaceDescriptor * chnSD = new cSpaceDescriptor(1, new cHNTuple(), typ, false);
+	cHNTuple *chnTuple = new cHNTuple();
+
+	chnTuple->Resize(chnSD);
+
+
+	chnTuple->SetValue(0, 514515, chnSD);
+	
 
 
 	return record;
@@ -93,7 +111,7 @@ inline int cRecordGeneratorFix::GenerateInt()
 	int randNumber;
 	srand(time(NULL));
 
-	randNumber = rand() % 94 + 20;
+	randNumber = rand() % 156+65;
 
 	return randNumber;
 }

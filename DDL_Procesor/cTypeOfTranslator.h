@@ -24,14 +24,19 @@ cTypeOfTranslator::cTypeOfTranslator() :type()
 
 void cTypeOfTranslator::SetType(string input)
 {
-	if (std::size_t foundDDL = input.find("create table", 0) == 0)
+	if ( input.find("create table", 0) == 0 || input.find("CREATE TABLE", 0) == 0)
 	{
-		if (input.find("option:BTREE") != std::string::npos) {
+		if (input.find("OPTION:BTREE") != std::string::npos) {
 			std::cout << "btree" << '\n';
 			type = CREATE;
 		}
-		else if (input.find("option:RTREE") != std::string::npos) {
+		else if (input.find("OPTION:MD_table") != std::string::npos) //rstrom
+		{
 			std::cout << "Rtree" << '\n';
+			type = CREATE;
+		}
+		else if (input.find("OPTION:CLUSTERED_table") != std::string::npos) {
+			std::cout << "clustered table" << '\n';
 			type = CREATE;
 		}
 		else
@@ -42,7 +47,7 @@ void cTypeOfTranslator::SetType(string input)
 		
 		
 	}
-	else if (std::size_t foundDDL = input.find("create index", 0) == 0)
+	else if (input.find("create index", 0) == 0 || input.find("CREATE INDEX", 0) == 0)
 	{
 		type = INDEX;
 	}

@@ -70,18 +70,20 @@ int main()
 
 	cTable *table1=NULL;
 	
-	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) option:BTREE";
-	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
-	//string query = "create table ahoj(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) option:BTREE";
-	string query = "create table ahoj(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) option:BTREE";
+	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) OPTION:BTREE";
+	//string query = "create table ahoj(ID INT PRIMARY KEY,AGE INT NOT NULL) OPTION:MD_INDEX";
+	string query = "create table ahoj(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) OPTION:BTREE";
+	//string query = "create table ahoj(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) OPTION:MD_INDEX";
 	table1=ValidationTest(table1,query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	
 	query = "create index index_name ON ahoj(AGE)";
 	table1=ValidationTest(table1, query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	
 	
-	
+	cTable *table2 = NULL;
 
+	 query = "create table ahoj2(ID INT PRIMARY KEY,AGE INT NOT NULL) OPTION:CLUSTERED_TABLE";
+	 table2 = ValidationTest(table2, query, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	
 	
 

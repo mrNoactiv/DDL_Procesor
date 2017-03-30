@@ -5,7 +5,7 @@
 #include "cColumn.h"
 
 
-enum TypeOfCreate { BTREE,RTREE, CLUSTERED_INDEX };
+enum TypeOfCreate { BTREE,RTREE, CLUSTERED_TABLE };
 class cTranslatorCreate
 {
 public:
@@ -176,7 +176,7 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 			column->notNull = false;
 
 		}
-		if (input.find("PRIMARY KEY", position + 1) == position + 1)
+		if (input.find("PRIMARY KEY", position + 1) == position + 1 )
 		{
 			keyPosition = column->positionInTable;
 			column->primaryKey = true;
@@ -206,17 +206,17 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 	{
 		position = position + 7;
 
-		if (input.find("RTREE", position) == position)
+		if (input.find("MD_INDEX", position) == position || input.find("MD_INDEX", position) == position)
 		{
 			typeOfCreate = RTREE;
 		}
-		else if (input.find("BTREE", position) == position)
+		else if (input.find("BTREE", position) == position || input.find("btree", position) == position)
 		{
 			typeOfCreate = BTREE;
 		}
-		else if (input.find("CLUSTERED_INDEX", position) == position)
+		else if (input.find("CLUSTERED_TABLE", position) == position || input.find("clustered_table", position) == position)
 		{
-			typeOfCreate = CLUSTERED_INDEX;
+			typeOfCreate = CLUSTERED_TABLE;
 		}
 		else
 		{

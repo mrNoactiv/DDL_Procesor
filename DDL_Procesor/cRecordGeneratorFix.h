@@ -71,18 +71,7 @@ inline cTuple* cRecordGeneratorFix::CreateNewRecord()
 		}
 
 	}
-
-	cDataType *typ[] = { new cInt() };//test haldy
-	cSpaceDescriptor * chnSD = new cSpaceDescriptor(1, new cHNTuple(), typ, false);
-	cHNTuple *chnTuple = new cHNTuple();
-
-	chnTuple->Resize(chnSD);
-
-
-	chnTuple->SetValue(0, 514515, chnSD);
 	
-
-
 	return record;
 }
 

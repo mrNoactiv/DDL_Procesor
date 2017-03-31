@@ -1,8 +1,10 @@
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\framework.pdb
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\framework.idb
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cnode.obj
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cnodecache.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cnodeheader.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cquerystatistics.obj
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cquickdb.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ctreeheader.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ctreenodeheader.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ccudatimer.obj
@@ -11,10 +13,13 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cmemorymanagercuda.
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cqueryprocstat.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\crangequeryconfig.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\crangequerycontext.obj
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ccommonrtree.obj
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\crtreeheader.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\crtreelog.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\csignaturecontroller.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\csignaturekey.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\csignaturerecord.obj
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\csignaturestorage.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cheapmemoryblock.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cmemoryblock.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cmemorymanager.obj
@@ -24,6 +29,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cexponentialrandomg
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cgaussrandomgenerator.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cuniformrandomgenerator.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ccharstream.obj
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cfilestream.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ccounter.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\chistogram.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cmemcheckutil.obj
@@ -60,12 +66,6 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ccommon.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cfastbitarray.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cmemory.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cnumber.obj
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cnodecache.obj
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cquickdb.obj
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\ccommonrtree.obj
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\crtreeheader.obj
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\csignaturestorage.obj
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\cfilestream.obj
 d:\skola\bakalarka\aplikace\ddl_procesor\x64\debug\framework.lib
 d:\skola\bakalarka\aplikace\ddl_procesor\x64\debug\framework.pdb
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\x64\debug\framework.tlog\cl.command.1.tlog

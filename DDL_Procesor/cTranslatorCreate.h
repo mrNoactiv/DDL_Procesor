@@ -202,11 +202,11 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 
 	} while (input.find(")", position) != position);
 	position = position + 2;
-	if (input.find("option:", position ) == position)
+	if (input.find("OPTION:", position ) == position)
 	{
 		position = position + 7;
 
-		if (input.find("MD_INDEX", position) == position || input.find("MD_INDEX", position) == position)
+		if (input.find("MD_TABLE", position) == position || input.find("md_table", position) == position)
 		{
 			typeOfCreate = RTREE;
 		}

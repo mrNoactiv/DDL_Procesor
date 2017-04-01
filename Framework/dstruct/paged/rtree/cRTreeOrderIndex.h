@@ -89,7 +89,7 @@ public:
 	inline void SetTuple(cTuple* tuple, uint firstValue, uint secondValue);
 	inline void CharToInt(const char* data, uint& indexID, uint& positionID) const;
 	bool InsertOrUpdateTuple(tNodeIndex nodeIndex, const TKey& key);
-	cTuple* GetTuple(tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const;
+	TKey* GetTuple(tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const;
 	void GetTupleIndex(tNodeIndex nodeIndex, uint& indexID, uint& positionID) const;
 	void PrintFT (tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const;
 	void PrintInfo();
@@ -259,7 +259,7 @@ bool cRTreeOrderIndex<TKey>::InsertOrUpdateTuple(tNodeIndex nodeIndex, const TKe
 
 /// Get tuple record.
 template<class TKey>
-cTuple* cRTreeOrderIndex<TKey>::GetTuple(tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const
+TKey* cRTreeOrderIndex<TKey>::GetTuple(tNodeIndex nodeIndex, const cSpaceDescriptor* sd) const
 {
 	/*uint indexID, positionID;
 	GetTupleIndex(nodeIndex, indexID, positionID);

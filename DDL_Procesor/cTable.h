@@ -447,7 +447,7 @@ inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 
 
 
-			//mKeyIndex->Insert(*keyTuple, keyTuple->GetData());Error
+			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 
 		}
 		else

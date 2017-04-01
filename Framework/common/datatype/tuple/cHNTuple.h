@@ -61,7 +61,7 @@ namespace common {
 				static inline int Equal(const char* cUnfTuple_t1, const char* cUnfTuple_t2, const unsigned int order, const cSpaceDescriptor* pSd);
 				static inline int Equal(const cHNTuple& tuple1,const char* tuple2,const cSpaceDescriptor* psd);//GRU0047
 				static inline int Equal(const cHNTuple& tuple1, const char* tuple2, const cDTDescriptor* psd);//GRU0047
-				static inline int Equal(char * tuple1, const char* tuple2, short order, const cDTDescriptor* psd);//GRU0047
+				static inline int Equal(const char * tuple1, const char* tuple2, const unsigned int order, const cDTDescriptor* psd);//GRU0047
 				static inline int Equal(const char * tuple1, const char* tuple2,  const cDTDescriptor* psd);//gru0047
 
 				inline unsigned int Copy(const char *srcData, const cSpaceDescriptor* pDtD);//gru0047	
@@ -306,14 +306,10 @@ inline int cHNTuple::Equal(const cHNTuple & tuple1, const char * tuple2, const c
 	}
 }
 
-inline int cHNTuple::Equal(char * tuple1, const char * tuple2, short order, const cDTDescriptor * psd)//gru0047
+inline int cHNTuple::Equal(const char * tuple1, const char * tuple2, const unsigned int order, const cDTDescriptor * psd)//gru0047
 {
-	const char * tuple = tuple1;
-		int ret = Equal(tuple, tuple2, order, (cSpaceDescriptor*)psd);
-		if (ret == -1 || ret == 1)
-		{
-			return ret;
-		}
+
+		return Equal(tuple1, tuple2, order, (cSpaceDescriptor*)psd);
 	
 }
 

@@ -18,6 +18,7 @@
 #include "cCompleteBTree.h"
 #include "cRecordGeneratorVar.h"
 #include "cRecordGeneratorFix.h"
+#include "cCompleteSeqArray.h"
 
 
 class cTable
@@ -29,8 +30,9 @@ public:
 	/*proměnné k  vytvoření stromu*/
 	TypeOfCreate typeOfTable;
 	std::vector<cDataType*> vHeap;//prázný vektor který se přetvoří na haldu jako rekace na create table
-	//cBpTree<cTuple> *mKeyIndex;//prázdné tělo stromu strom
-	//cBpTreeHeader<cTuple> *mKeyHeader;//prázdná hlavička
+	cCompleteSeqArray<cTuple>*seqHeapFix;
+	cCompleteSeqArray<cHNTuple>*seqHeapVar;
+
 	bool varlen;
 	bool keyVarlen;
 	bool homogenous;
@@ -60,8 +62,8 @@ public:
 public:
 
 	cTable();
-	bool CreateTable(string query, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
-	bool CreateIndex(string query, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
+	bool CreateTable(string query, cQuickDB *quickDB, const unsigned int blockSize, const unsigned int cacheSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
+	bool CreateIndex(string query, cQuickDB *quickDB, const unsigned int blockSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
 	bool CreateClusteredTable(cTranslatorCreate *translator, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
 
 	void SetValues(cTuple *tuple, cSpaceDescriptor *SD);
@@ -84,6 +86,8 @@ public:
 	bool ConstructVarlenHomoIndexRTree(string indexName, cDataType * indexType, cSpaceDescriptor *indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB);
 	bool ConstructVarlenIndexRTree(string indexName, cDataType * indexType, cSpaceDescriptor *indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB);
 
+	bool CreateSequentialArray(const char* uniqueName, const unsigned int blockSize, const unsigned int cacheSize, cSpaceDescriptor *sd, cQuickDB *quickDB);
+
 	bool CallGenerator();
 };
 
@@ -92,7 +96,7 @@ cTable::cTable():vHeap(NULL),varlenKeyColumnSD(NULL)
 	
 }
 
-inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize)
+inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned int blockSize, const unsigned int cacheSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize)
 {
 	//bstrom1
 	cTranslatorCreate *translator = new cTranslatorCreate();//instance překladače
@@ -110,6 +114,8 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 	typeOfTable = translator->typeOfCreate;
 	homogenous = translator->homogenous;
 	
+	
+	
 	for (int i = 0; i < columns->size(); i++)
 	{
 		if (columns->at(i)->primaryKey)
@@ -122,12 +128,15 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 	if (varlen && homogenous==false)
 	{
 		varGen = new cRecordGeneratorVar(columns, SD);
+		seqHeapVar = new cCompleteSeqArray<cHNTuple>((tableName + "_heap").c_str(), blockSize, cacheSize, SD, quickDB);
 	}
 	else
+	{
 		fixGen = new cRecordGeneratorFix(columns, SD);
+		seqHeapFix = new cCompleteSeqArray<cTuple>((tableName + "_heap").c_str(), blockSize, cacheSize, SD, quickDB);
+	}
+
 	
-
-
 
 	if (typeOfTable == BTREE)
 	{
@@ -145,7 +154,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 
 		if (keyVarlen == false)
 		{
-			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, keySD, sizeof(keyType), sizeof(int)/*keySD->GetSize()*/, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, sizeof(keyType), sizeof(int)/*keySD->GetSize()*/, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 
 
 			if (index != NULL)
@@ -174,7 +183,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 			unsigned int hue = sizeof(ntp);
 			unsigned int hue2 = sizeof(ntp);
 
-			cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, keySD, keySD->GetTypeSize()/*tp->GetSize(keySD)*/, /*sizeof(ntp)*/sizeof(int), true, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+			cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize()/*tp->GetSize(keySD)*/, /*sizeof(ntp)*/sizeof(int), true, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 
 			if (index != NULL)
 			{
@@ -193,7 +202,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 		
 		if (keyVarlen == false)
 		{
-			cCompleteRTree<cTuple>*index = new cCompleteRTree<cTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, keySD, keySD->GetTypeSize(), sizeof(keyType), false, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
+			cCompleteRTree<cTuple>*index = new cCompleteRTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize(), sizeof(keyType), false, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 
 
 			if (index != NULL)
@@ -220,7 +229,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 
 
 
-			cCompleteRTree<cHNTuple>*index = new cCompleteRTree<cHNTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, keySD, keySD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
+			cCompleteRTree<cHNTuple>*index = new cCompleteRTree<cHNTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 			
 			if (index != NULL)
 			{
@@ -234,7 +243,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 	}
 	else if(typeOfTable ==CLUSTERED_TABLE)
 	{
-		CreateClusteredTable(translator, quickDB,  BLOCK_SIZE, DSMODE,  compressionRatio,  codeType,  runtimeMode,  histograms, inMemCacheSize);
+		CreateClusteredTable(translator, quickDB, blockSize, DSMODE,  compressionRatio,  codeType,  runtimeMode,  histograms, inMemCacheSize);
 	}
 	else
 	{
@@ -430,6 +439,7 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 
 inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 {
+	unsigned int nodeid, position;
 	if (typeOfTable == RTREE)
 	{
 
@@ -446,7 +456,7 @@ inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 			keyTuple->SetValue(1, rowID, keySD);
 
 
-
+//			mSeqArray->AddItem(nodeid, position, *tuple);
 			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 
 		}
@@ -460,6 +470,8 @@ inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 			int rowID = vHeap.size();
 			keyTuple->SetValue(1, rowID, keySD);
 
+
+			//mSeqArray->AddItem(nodeid, position, *tuple);
 			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 		}
 	}
@@ -478,7 +490,7 @@ inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 			keyTuple->SetValue(1, rowID, keySD);
 
 
-
+			//mSeqArray->AddItem(nodeid, position, *tuple);
 			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 
 		}
@@ -499,6 +511,7 @@ inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 
 inline void cTable::SetValues(cHNTuple *tuple, cSpaceDescriptor *SD)//nastavení hodnopty záznamu a vložení primárního klíče do b-stromu pro primarni kliče
 {
+	unsigned int nodeid, position;
 	if (typeOfTable == RTREE)
 	{
 
@@ -515,8 +528,10 @@ inline void cTable::SetValues(cHNTuple *tuple, cSpaceDescriptor *SD)//nastavení
 			keyTuple->SetValue(1, rowID, keySD);
 
 
+			//mSeqArray->AddItem(nodeid, position, *tuple);
 
-			//mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
+
+			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 
 		}
 		else
@@ -533,7 +548,7 @@ inline void cTable::SetValues(cHNTuple *tuple, cSpaceDescriptor *SD)//nastavení
 			keyTuple->SetValue(1, rowID, keySD);
 
 
-
+			//mSeqArray->AddItem(nodeid, position, *tuple);
 			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 		}
 			
@@ -555,7 +570,7 @@ inline void cTable::SetValues(cHNTuple *tuple, cSpaceDescriptor *SD)//nastavení
 			keyTuple->SetValue(1, rowID, keySD);
 
 
-
+			//mSeqArray->AddItem(nodeid, position, *tuple);
 			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 		}
 		else
@@ -572,7 +587,7 @@ inline void cTable::SetValues(cHNTuple *tuple, cSpaceDescriptor *SD)//nastavení
 			keyTuple->SetValue(1, rowID, keySD);
 
 
-
+			//mSeqArray->AddItem(nodeid, position, *tuple);
 			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
 		}
 	}
@@ -1089,14 +1104,5 @@ inline bool cTable::ConstructVarlenIndexRTree(string indexName, cDataType * inde
 }
 
 
-inline bool cTable::CallGenerator()
-{
-	if (varlen && homogenous==false)
-	{
-		varGen->CreateNewRecord();
-	}
-	else
-	{
-		fixGen->CreateNewRecord();
-	}
-}
+
+

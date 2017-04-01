@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "dstruct/paged/rtree/cRTree.h";
+#include "dstruct/paged/rtree/cRTree.h"
 
 template<class TKey>
 class cCompleteRTree

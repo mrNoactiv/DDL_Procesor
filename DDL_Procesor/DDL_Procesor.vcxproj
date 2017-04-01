@@ -154,6 +154,7 @@
     <ClInclude Include="cColumn.h" />
     <ClInclude Include="cCompleteBTree.h" />
     <ClInclude Include="cCompleteRTree.h" />
+    <ClInclude Include="cCompleteSeqArray.h" />
     <ClInclude Include="cRecordGeneratorFix.h" />
     <ClInclude Include="cRecordGeneratorVar.h" />
     <ClInclude Include="cTable.h" />

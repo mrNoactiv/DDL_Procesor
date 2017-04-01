@@ -13,7 +13,7 @@
 
 
 
-cTable* ValidationTest(cTable *table,string query, cQuickDB *quckdb, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
+cTable* ValidationTest(cTable *table,string query, cQuickDB *quckdb, const unsigned int BLOCK_SIZE, const unsigned int cacheSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
 int main()
 {
 	/*proměnné*/
@@ -79,36 +79,36 @@ int main()
 
 
 	string query1 = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) OPTION:BTREE";
-	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	query1 = "create index index_name ON ahoj(AGE)";
-	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 	table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
 
 
 
 	string query2 = "create table ahoj2(ID INT PRIMARY KEY,AGE INT NOT NULL,length INT NOT NULL,weight INT NOT NULL) OPTION:BTREE";
-	table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	query2 = "create index index_name2 ON ahoj2(AGE)";
-	table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
 
 	string query3 = "create table ahoj3(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) OPTION:BTREE";
-	table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	query3 = "create index index_name3 ON ahoj3(AGE)";
-	table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
 
 	string query4 = "create table ahoj4(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) OPTION:BTREE";
-	table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	query4 = "create index index_name4 ON ahoj4(AGE)";
-	table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
 	string query5 = "create table ahoj5(ID INT NOT NULL,AGE VARCHAR(10) PRIMARY KEY) OPTION:BTREE";
-	table5 = ValidationTest(table5, query5, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	table5 = ValidationTest(table5, query5, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 	/*
 	cTable *table5 = NULL;
@@ -147,7 +147,7 @@ int main()
 }
 
 
-cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, const uint inMemCacheSize)
+cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsigned int BLOCK_SIZE, const unsigned int cacheSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, const uint inMemCacheSize)
 {
 	cTable *table1 = table;
 	if (table1 == NULL)
@@ -164,7 +164,7 @@ cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsi
 
 	if (typeofTranslator->type == Type::CREATE)
 	{
-		table1->CreateTable(query, quckdb, BLOCK_SIZE, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize);
+		table1->CreateTable(query, quckdb, BLOCK_SIZE, cacheSize, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize);
 		SD = table1->SD;
 
 		/*generování záznamů*/

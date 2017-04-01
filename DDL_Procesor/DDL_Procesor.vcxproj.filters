@@ -66,6 +66,9 @@
     <ClInclude Include="cRecordGeneratorFix.h">
       <Filter>Source Files\Generators</Filter>
     </ClInclude>
+    <ClInclude Include="cCompleteSeqArray.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DDL_Procesor.cpp">

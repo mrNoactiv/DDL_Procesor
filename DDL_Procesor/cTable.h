@@ -36,6 +36,7 @@ public:
 	bool varlen;
 	bool keyVarlen;
 	bool homogenous;
+	unsigned int sizeOfData = sizeof(uint) + sizeof(short);
 
 	cSpaceDescriptor *keySD;//SD pro klič
 	cSpaceDescriptor *varlenKeyColumnSD;//SD sloupce který je v klíči
@@ -64,7 +65,7 @@ public:
 	cTable();
 	bool CreateTable(string query, cQuickDB *quickDB, const unsigned int blockSize, const unsigned int cacheSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
 	bool CreateIndex(string query, cQuickDB *quickDB, const unsigned int blockSize, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
-	bool CreateClusteredTable(cTranslatorCreate *translator, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
+	bool CreateClusteredTable(cTranslatorCreate *translator, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, static const uint structure, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize);
 
 	void SetValues(cTuple *tuple, cSpaceDescriptor *SD);
 	void SetValues(cHNTuple *tuple, cSpaceDescriptor *SD);
@@ -73,9 +74,10 @@ public:
 	cTuple* FindKey(float searchedValue);
 	
 	cTuple * TransportItemFixLen(cTuple *sourceTuple, cSpaceDescriptor *mSd, int columnPosition, cDataType *mType);
-	cHNTuple * TransportItemVarLen(cHNTuple *sourceTuple, cSpaceDescriptor *columnSD, cSpaceDescriptor *keySD, int columnPosition, cDataType *mType);
+	//cHNTuple * TransportItemVarLen(cHNTuple *sourceTuple, cSpaceDescriptor *columnSD, cSpaceDescriptor *keySD, int columnPosition, cDataType *mType);
 	cTuple * TransportItemFixLen(cHNTuple *sourceTuple, cSpaceDescriptor *mSd, int columnPosition, cDataType *mType);
 	cHNTuple * TransportItemVarLen(cTuple *sourceTuple, cSpaceDescriptor *mSd, cSpaceDescriptor *keySD, int columnPosition, cDataType *mType);
+	cTuple * TransportItemVarLen(cHNTuple *sourceTuple, cSpaceDescriptor *mSd, cSpaceDescriptor *keySD, int columnPosition, cDataType *mType);
 
 	
 	bool ConstructFixIndexBtree(string indexName, cDataType *indexType, int indexColumnPosition, uint blockSize, cSpaceDescriptor *indexSD, uint dsMode, uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize, cQuickDB *quickDB);
@@ -85,10 +87,9 @@ public:
 	bool ConstructFixIndexRtree(string indexName, cDataType *indexType, int indexColumnPosition, uint blockSize, cSpaceDescriptor *indexSD, uint dsMode, uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB *quickDB);
 	bool ConstructVarlenHomoIndexRTree(string indexName, cDataType * indexType, cSpaceDescriptor *indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB);
 	bool ConstructVarlenIndexRTree(string indexName, cDataType * indexType, cSpaceDescriptor *indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB);
+	
+	char* LoadIndexData(unsigned int nodeId, unsigned int position);
 
-	bool CreateSequentialArray(const char* uniqueName, const unsigned int blockSize, const unsigned int cacheSize, cSpaceDescriptor *sd, cQuickDB *quickDB);
-
-	bool CallGenerator();
 };
 
 cTable::cTable():vHeap(NULL),varlenKeyColumnSD(NULL)
@@ -105,7 +106,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 	translator->TranlateCreate(query);//překladad cretae table
 
 	keySD = translator->keySD;
-	keyType = translator->keyType;
+	keyType = translator->keyDimensionType;
 	SD = translator->SD;
 	columns = translator->columns;
 	tableName = translator->tableName;
@@ -137,62 +138,87 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 	}
 
 	
-
+	
 	if (typeOfTable == BTREE)
 	{
 		indexesFixLenBTree = new vector<cCompleteBTree<cTuple>*>();
 		indexesVarLenBTree = new vector<cCompleteBTree<cHNTuple>*>();
-		
+
+
+
+
 		unsigned int indexSD = keySD->GetSize();
 		//unsigned int lengthIndexSD = tp->GetLength();//pocet sloupcu
 		unsigned int typeSizeIndex = keySD->GetTypeSize();
 
-		unsigned int keysd = sizeof(keyType);
+
 		unsigned int lengthkeySD = sizeof(int);
 		//unsigned int typeSizeKey = varlenKeyColumnSD->GetTypeSize();
 
 
-		if (keyVarlen == false)
+		unsigned int jedna = varlenKeyColumnSD->GetSize();
+		unsigned int dva = varlenKeyColumnSD->GetTypeSize();
+
+		unsigned int tri = keySD->GetDimensionSize(0);
+		unsigned int tridva = varlenKeyColumnSD->GetTypeSize();
+
+		if (keyVarlen)
 		{
-			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, sizeof(keyType), sizeof(int)/*keySD->GetSize()*/, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
-
-
+			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetDimensionSize(0), sizeOfData, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 			if (index != NULL)
 			{
 				indexesFixLenBTree->push_back(index);
-
 				return true;
 			}
 		}
 		else
 		{
-			cNTuple *ntp = new cNTuple(varlenKeyColumnSD);
-			
-			cHNTuple *tp = new cHNTuple();
-			tp->Resize(keySD);
-			//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
-			
-			unsigned int indexSD = keySD->GetSize();
-			unsigned int lengthIndexSD = tp->GetLength();//pocet sloupcu
-			unsigned int typeSizeIndex = keySD->GetTypeSize();
-
-			unsigned int keysd = varlenKeyColumnSD->GetSize();
-			unsigned int lengthkeySD = ntp->GetLength();
-			unsigned int typeSizeKey = varlenKeyColumnSD->GetTypeSize();
-
-			unsigned int hue = sizeof(ntp);
-			unsigned int hue2 = sizeof(ntp);
-
-			cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize()/*tp->GetSize(keySD)*/, /*sizeof(ntp)*/sizeof(int), true, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
-
+			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetSize(), sizeOfData, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 			if (index != NULL)
 			{
-				indexesVarLenBTree->push_back(index);
-				//indexesFixLen->push_back(index);
+				indexesFixLenBTree->push_back(index);
 				return true;
 			}
-
 		}
+
+		/*if (keyVarlen == false)
+		{*/
+		/*cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetDimensionSize(0) , sizeOfData, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+			if (index != NULL)
+			{
+				indexesFixLenBTree->push_back(index);
+				return true;
+			}*/
+		//}
+		//else
+		//{
+		//	cNTuple *ntp = new cNTuple(varlenKeyColumnSD);
+		//	
+		//	cHNTuple *tp = new cHNTuple();
+		//	tp->Resize(keySD);
+		//	//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
+		//	
+		//	unsigned int indexSD = keySD->GetSize();
+		//	unsigned int lengthIndexSD = tp->GetLength();//pocet sloupcu
+		//	unsigned int typeSizeIndex = keySD->GetTypeSize();
+
+		//	unsigned int keysd = varlenKeyColumnSD->GetSize();
+		//	unsigned int lengthkeySD = ntp->GetLength();
+		//	unsigned int typeSizeKey = varlenKeyColumnSD->GetTypeSize();
+
+		//	unsigned int hue = sizeof(ntp);
+		//	unsigned int hue2 = sizeof(ntp);
+
+		//	cCompleteBTree<cNTuple>*index = new cCompleteBTree<cNTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize(), sizeOfData, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+
+		//	if (index != NULL)
+		//	{
+		//		//indexesVarLenBTree->push_back(index);
+		//		//indexesFixLen->push_back(index);
+		//		return true;
+		//	}
+
+		//}
 
 	}
 	else if (typeOfTable == RTREE)
@@ -202,7 +228,7 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 		
 		if (keyVarlen == false)
 		{
-			cCompleteRTree<cTuple>*index = new cCompleteRTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize(), sizeof(keyType), false, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
+			cCompleteRTree<cTuple>*index = new cCompleteRTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetSize(), sizeOfData, false, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 
 
 			if (index != NULL)
@@ -214,36 +240,36 @@ inline bool cTable::CreateTable(string query, cQuickDB *quickDB, const unsigned 
 		}
 		else
 		{
-			cNTuple *ntp = new cNTuple(varlenKeyColumnSD);
-			cHNTuple *tp = new cHNTuple();
-			tp->Resize(keySD);
-			//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
-			unsigned int indexSD = keySD->GetSize();
-			unsigned int lengthIndexSD = tp->GetLength();
-			unsigned int typeSizeIndex = keySD->GetTypeSize();
-
-			unsigned int keysd = varlenKeyColumnSD->GetSize();
-			unsigned int lengthkeySD = ntp->GetLength();
-			unsigned int typeSizeKey = varlenKeyColumnSD->GetTypeSize();
-
-
-
-
-			cCompleteRTree<cHNTuple>*index = new cCompleteRTree<cHNTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
-			
+			cCompleteRTree<cTuple>*index = new cCompleteRTree<cTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetDimensionSize(0), sizeOfData, false, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 			if (index != NULL)
 			{
-				indexesVarLenRTree->push_back(index);
-				//indexesFixLen->push_back(index);
+				indexesFixLenRTree->push_back(index);
 				return true;
 			}
-		
 		}
+		//}
+		//else
+		//{
+		//	
+		//	cCompleteRTree<cNTuple>*index = new cCompleteRTree<cNTuple>(tableName.c_str(), translator->keyPosition, blockSize, keySD, keySD->GetSize(), sizeOfData, false, DSMODE, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
+		//	
+		//	if (index != NULL)
+		//	{
+		//		//indexesVarLenRTree->push_back(index);
+
+		//		return true;
+		//	}
+		//
+		//}
 
 	}
-	else if(typeOfTable ==CLUSTERED_TABLE)
+	else if(typeOfTable ==CLUSTERED_TABLE_BTREE)
 	{
-		CreateClusteredTable(translator, quickDB, blockSize, DSMODE,  compressionRatio,  codeType,  runtimeMode,  histograms, inMemCacheSize);
+		CreateClusteredTable(translator, quickDB, blockSize, DSMODE, cDStructConst::RTREE  ,compressionRatio,  codeType,  runtimeMode,  histograms, inMemCacheSize);
+	}
+	else if (typeOfTable == CLUSTERED_TABLE_BTREE)
+	{
+		CreateClusteredTable(translator, quickDB, blockSize, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize);
 	}
 	else
 	{
@@ -267,9 +293,7 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 	string indexName = translator->indexName;
 	bool varlenIndex=false;
 
-	/*tvorba klíčového SD*/
-	cDataType ** ptr;
-	ptr = new cDataType*[2];
+	
 
 	cSpaceDescriptor *indexKeyColumnSD=NULL;//SD klíčového sloupce
 
@@ -285,8 +309,6 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 				found = true;
 				indexColumnPosition = columns->at(i)->positionInTable;//pozice v tabulce
 				indexType = columns->at(i)->cType;//typ
-				ptr[0] = indexType;//typ proměnné v indexu
-				ptr[1] = new cInt();//rowID
 				size = columns->at(i)->size;
 				if (size != 0)
 				{
@@ -311,66 +333,35 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 	cSpaceDescriptor *indexSD = NULL;//SD indexu
 	if (varlenIndex)
 	{
-		indexSD = new cSpaceDescriptor(2, new cHNTuple(), ptr, false);
+		indexSD = new cSpaceDescriptor(1, new cHNTuple(), indexType, false);
 		indexSD->SetDimSpaceDescriptor(0, indexKeyColumnSD);
-		indexSD->SetDimensionType(0, ptr[0]);
+		indexSD->SetDimensionType(0, indexType);
 
 		indexSD->Setup();
 	}
 	else
 	{
-		indexSD = new cSpaceDescriptor(2, new cTuple(), ptr, false);
+		indexSD = new cSpaceDescriptor(1, new cTuple(), indexType, false);
 	}
 
 	if (typeOfTable == RTREE)
 	{
-		if (varlenIndex == false)
-		{
+		
 			ConstructFixIndexRtree(indexName.c_str(), indexType, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 			
 			
-		}
-		else if (varlenIndex && homogenous)
-		{
-			ConstructVarlenHomoIndexRTree(indexName.c_str(), indexType, indexKeyColumnSD, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
-		}
 		
-		else
-		{
-			ConstructVarlenIndexRTree(indexName.c_str(), indexType, indexKeyColumnSD, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
-
-
-		
-		}
 	}
 	else
 	{
 
-		if (varlenIndex == false)
-		{
 
-			ConstructFixIndexBtree(indexName.c_str(), indexType, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+		ConstructFixIndexBtree(indexName.c_str(), indexType, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 
-
-
-			
-		}
-		else if (varlenIndex && homogenous)
-		{
-			ConstructVarlenHomoIndexBTree(indexName.c_str(), indexType, indexKeyColumnSD, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
-
-
-		}
-		else
-		{
-			ConstructVarlenIndexBTree(indexName.c_str(), indexType, indexKeyColumnSD, indexColumnPosition, BLOCK_SIZE, indexSD, DSMODE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
-			
-
-		}
 	}
 	}
 
-	inline bool cTable::CreateClusteredTable(cTranslatorCreate *translator, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize)
+	inline bool cTable::CreateClusteredTable(cTranslatorCreate *translator, cQuickDB *quickDB, const unsigned int BLOCK_SIZE, uint DSMODE, static const uint structure, unsigned int compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize)
 {
 		/*setřízení typů, aby na pozici 0 byl pk*/
 		cDataType ** ptr;
@@ -404,7 +395,7 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 		{
 			clusteredSD = new cSpaceDescriptor(columns->size(), new cHNTuple(), ptr);
 			
-			cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, translator->SD, translator->SD->GetTypeSize(), translator->SD->GetSize(), true, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+			cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, translator->SD, translator->SD->GetTypeSize(), translator->SD->GetSize(), true, DSMODE, structure, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 
 
 			if (index != NULL)
@@ -419,7 +410,7 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 		{
 			clusteredSD = new cSpaceDescriptor(columns->size(), new cTuple(), ptr);
 			
-			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, translator->SD, translator->SD->GetTypeSize(), sizeof(keyType)/*indexSD->GetSize()*/, false, DSMODE, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+			cCompleteBTree<cTuple>*index = new cCompleteBTree<cTuple>(tableName.c_str(), translator->keyPosition, BLOCK_SIZE, translator->SD, translator->SD->GetTypeSize(), sizeof(keyType)/*indexSD->GetSize()*/, false, DSMODE, structure, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 
 
 			if (index != NULL)
@@ -439,73 +430,33 @@ inline bool cTable::CreateIndex(string query, cQuickDB * quickDB, const unsigned
 
 inline void cTable::SetValues(cTuple * tuple, cSpaceDescriptor * SD)
 {
-	unsigned int nodeid, position;
+	
 	if (typeOfTable == RTREE)
 	{
 
-		if (keyVarlen)//pokud cTuple který obsahuje varchary
-		{
-			cRTree<cHNTuple> *mKeyIndex = indexesVarLenRTree->at(0)->mIndex;
-
-			cHNTuple *keyTuple = TransportItemVarLen(tuple, varlenKeyColumnSD, keySD, indexesVarLenRTree->at(0)->indexColumnPosition, keyType);
-
-
-
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-
-//			mSeqArray->AddItem(nodeid, position, *tuple);
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-
-		}
-		else
-		{
+		
 			cRTree<cTuple> *mKeyIndex = indexesFixLenRTree->at(0)->mIndex;
 
 			cTuple *keyTuple = TransportItemFixLen(tuple, keySD, indexesFixLenRTree->at(0)->indexColumnPosition, keyType);
 
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
 
 
-			//mSeqArray->AddItem(nodeid, position, *tuple);
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-		}
+			unsigned int nodeid, position;
+			seqHeapFix->mSeqArray->AddItem(nodeid, position, *tuple);
+			mKeyIndex->Insert(*keyTuple, LoadIndexData(nodeid,position));
+		
 	}
 	else
 	{
-		if (keyVarlen)//pokud cTuple který obsahuje varchary
-		{
-			cBpTree<cHNTuple> *mKeyIndex = indexesVarLenBTree->at(0)->mIndex;
-
-			cHNTuple *keyTuple = TransportItemVarLen(tuple, varlenKeyColumnSD, keySD, indexesVarLenBTree->at(0)->indexColumnPosition, keyType);
-
-			
-
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-
-			//mSeqArray->AddItem(nodeid, position, *tuple);
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-
-		}
-		else
-		{
+		
 			cBpTree<cTuple> *mKeyIndex = indexesFixLenBTree->at(0)->mIndex;
 
 			cTuple *keyTuple = TransportItemFixLen(tuple, keySD, indexesFixLenBTree->at(0)->indexColumnPosition, keyType);
 
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-		}
+			unsigned int nodeid, position;
+			seqHeapFix->mSeqArray->AddItem(nodeid, position, *tuple);
+			mKeyIndex->Insert(*keyTuple, LoadIndexData(nodeid,position));
+		
 	}
 }
 
@@ -515,81 +466,35 @@ inline void cTable::SetValues(cHNTuple *tuple, cSpaceDescriptor *SD)//nastavení
 	if (typeOfTable == RTREE)
 	{
 
-		if (varlenKeyColumnSD)
-		{
-			cRTree<cHNTuple> *mKeyIndex = indexesVarLenRTree->at(0)->mIndex;
-
-
-
-			cHNTuple *keyTuple = TransportItemVarLen(tuple, varlenKeyColumnSD, keySD, indexesVarLenRTree->at(0)->indexColumnPosition, keyType);
-
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-
-			//mSeqArray->AddItem(nodeid, position, *tuple);
-
-
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-
-		}
-		else
-		{
+		
 			cRTree<cTuple> *mKeyIndex = indexesFixLenRTree->at(0)->mIndex;
-
-
-
-
-			cTuple *keyTuple = TransportItemFixLen(tuple, keySD, indexesFixLenRTree->at(0)->indexColumnPosition, keyType);
-
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-
-			//mSeqArray->AddItem(nodeid, position, *tuple);
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-		}
+			cTuple *keyTuple = NULL;
+			if (keyVarlen==false)
+			{
+				keyTuple = TransportItemFixLen(tuple, keySD, indexesFixLenRTree->at(0)->indexColumnPosition, keyType);
+			}
+			else
+			{
+				keyTuple = TransportItemVarLen(tuple, varlenKeyColumnSD, keySD, indexesFixLenRTree->at(0)->indexColumnPosition, keyType);
+			}
+		
+			unsigned int nodeid, position;
+			seqHeapVar->mSeqArray->AddItem(nodeid, position, *tuple);
+			mKeyIndex->Insert(*keyTuple, LoadIndexData(nodeid, position));
+		
 			
 		
 	}
 	else
 	{
-		if (varlenKeyColumnSD && homogenous==false)
-		{
-			cBpTree<cHNTuple> *mKeyIndex = indexesVarLenBTree->at(0)->mIndex;
-
-
-
-
-			cHNTuple *keyTuple = TransportItemVarLen(tuple, varlenKeyColumnSD, keySD, indexesVarLenBTree->at(0)->indexColumnPosition, keyType);
-
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-
-			//mSeqArray->AddItem(nodeid, position, *tuple);
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-		}
-		else
-		{
+		
 			cBpTree<cTuple> *mKeyIndex = indexesFixLenBTree->at(0)->mIndex;//pořešit ukládání homogeních varchar záznamů
-
-
-
-
 			cTuple *keyTuple = TransportItemFixLen(tuple,  keySD, indexesFixLenBTree->at(0)->indexColumnPosition, keyType);
-
-			vHeap.push_back(tuple);
-			int rowID = vHeap.size();
-			keyTuple->SetValue(1, rowID, keySD);
-
-
-			//mSeqArray->AddItem(nodeid, position, *tuple);
-			mKeyIndex->Insert(*keyTuple, keyTuple->GetData());
-		}
+		
+			unsigned int nodeid, position;
+			seqHeapVar->mSeqArray->AddItem(nodeid, position, *tuple);
+			mKeyIndex->Insert(*keyTuple, LoadIndexData(nodeid, position));
+		
 	}
 }
 
@@ -754,45 +659,45 @@ inline cTuple * cTable::TransportItemFixLen(cTuple *sourceTuple, cSpaceDescripto
 	}
 	return destTuple;
 }
-inline cHNTuple * cTable::TransportItemVarLen(cHNTuple *sourceTuple, cSpaceDescriptor *columnSD, cSpaceDescriptor *keySD, int columnPosition, cDataType *mType)
-{
-
-	cHNTuple *pokus = new cHNTuple();
-	cNTuple *varlenTuple = new cNTuple(columnSD);
-	cHNTuple *destTuple = new cHNTuple();
-
-	
-
-
-	destTuple->Resize(keySD);
-
-
-
-	if (mType->GetCode() == 'n')
-	{
-
-		char * TEMPTuple = sourceTuple->GetTuple(sourceTuple->GetData(), columnPosition, SD);
-		varlenTuple->SetData(TEMPTuple);
-
-
-		destTuple->SetValue(0, *varlenTuple, keySD);
-
-		//pokus->Resize(keySD);
-
-		///varcharTuple->SetData(TEMPTuple);
-		//destTuple->SetValue(0, *varcharTuple, SD);
-		//char a=destTuple->GetCChar(0, mSd);
-
-	}
-	else if (mType->GetCode() == 'c')//char(nejasny Get)
-	{
-		char key = sourceTuple->GetWChar(columnPosition, SD);
-		destTuple->SetValue(0, key, keySD);
-	}
-
-	return destTuple;
-	
-}
+//inline cHNTuple * cTable::TransportItemVarLen(cHNTuple *sourceTuple, cSpaceDescriptor *columnSD, cSpaceDescriptor *keySD, int columnPosition, cDataType *mType)
+//{
+//
+//	cHNTuple *pokus = new cHNTuple();
+//	cNTuple *varlenTuple = new cNTuple(columnSD);
+//	cHNTuple *destTuple = new cHNTuple();
+//
+//	
+//
+//
+//	destTuple->Resize(keySD);
+//
+//
+//
+//	if (mType->GetCode() == 'n')
+//	{
+//
+//		char * TEMPTuple = sourceTuple->GetTuple(sourceTuple->GetData(), columnPosition, SD);
+//		varlenTuple->SetData(TEMPTuple);
+//
+//
+//		destTuple->SetValue(0, *varlenTuple, keySD);
+//
+//		//pokus->Resize(keySD);
+//
+//		///varcharTuple->SetData(TEMPTuple);
+//		//destTuple->SetValue(0, *varcharTuple, SD);
+//		//char a=destTuple->GetCChar(0, mSd);
+//
+//	}
+//	else if (mType->GetCode() == 'c')//char(nejasny Get)
+//	{
+//		char key = sourceTuple->GetWChar(columnPosition, SD);
+//		destTuple->SetValue(0, key, keySD);
+//	}
+//
+//	return destTuple;
+//	
+//}
 
 inline cTuple * cTable::TransportItemFixLen(cHNTuple * sourceTuple, cSpaceDescriptor * mSd,  int columnPosition, cDataType * mType)
 {
@@ -858,31 +763,95 @@ inline cHNTuple * cTable::TransportItemVarLen(cTuple * sourceTuple, cSpaceDescri
 	return destTuple;
 }
 
+inline cTuple * cTable::TransportItemVarLen(cHNTuple * sourceTuple, cSpaceDescriptor * columnSD, cSpaceDescriptor * keySD, int columnPosition, cDataType * mType)
+{
+
+		cNTuple *varlenTuple = new cNTuple(columnSD);
+		cTuple *destTuple = new cTuple(keySD);
+	
+		
+		if (mType->GetCode() == 'n')
+		{
+	
+			char * TEMPTuple = sourceTuple->GetTuple(sourceTuple->GetData(), columnPosition, SD);
+			varlenTuple->SetData(TEMPTuple);
+	
+	
+			destTuple->SetValue(0, *varlenTuple, keySD);
+	
+			//pokus->Resize(keySD);
+	
+			///varcharTuple->SetData(TEMPTuple);
+			//destTuple->SetValue(0, *varcharTuple, SD);
+			//char a=destTuple->GetCChar(0, mSd);
+	
+		}
+		else if (mType->GetCode() == 'c')//char(nejasny Get)
+		{
+			char key = sourceTuple->GetWChar(columnPosition, SD);
+			destTuple->SetValue(0, key, keySD);
+		}
+	
+		return destTuple;
+}
+
 inline bool cTable::ConstructFixIndexBtree(string indexName,cDataType *indexType, int indexColumnPosition, uint blockSize, cSpaceDescriptor *indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, static const uint inMemCacheSize, cQuickDB *quickDB)
 {
 	
 	
 	
 	
-	cCompleteBTree<cTuple> *index = new cCompleteBTree<cTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize(), sizeof(indexType)/*indexSD->GetSize()*/, false, dsMode, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+	cCompleteBTree<cTuple> *index = new cCompleteBTree<cTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetSize(), sizeOfData/*indexSD->GetSize()*/, false, dsMode, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
 
 
 	if (index != NULL)
 	{
-		for (int i = 1; i <= vHeap.size(); i++)
+		
+		if (varlen==NULL)
 		{
-			int size = vHeap.size();
+			seqHeapFix->mSeqArray->OpenContext(seqHeapFix->mHeader->GetFirstNodeIndex(), 0, seqHeapFix->context);
 
-			cTuple *heapTuple = (cTuple*)vHeap.at(i - 1);
+			do
+			{
 
-			cTuple *tuple = TransportItemFixLen(heapTuple, indexSD, indexColumnPosition, indexType);
-			tuple->SetValue(1, i - 1, indexSD);
+				cTuple *heapTuple = new cTuple(indexSD);
+				heapTuple->SetData(seqHeapFix->context->GetItem());
+				cTuple *tuple = TransportItemFixLen(heapTuple, indexSD, indexColumnPosition, indexType);
+
+				int a = tuple->GetInt(0, indexSD);
+
+				index->mIndex->Insert(*tuple, LoadIndexData(seqHeapFix->context->GetNode()->GetIndex(), seqHeapFix->context->GetPosition()));
+			} while (seqHeapFix->mSeqArray->Advance(seqHeapFix->context));
+
+			seqHeapFix->mSeqArray->CloseContext(seqHeapFix->context);
+
+			return true;
 
 
-			index->mIndex->Insert(*tuple, tuple->GetData());
+
 		}
-		indexesFixLenBTree->push_back(index);
-		return true;
+		else
+		{
+			seqHeapVar->mSeqArray->OpenContext(seqHeapVar->mHeader->GetFirstNodeIndex(), 0, seqHeapVar->context);
+
+			do
+			{
+
+				cTuple *heapTuple = new cTuple(indexSD);
+				heapTuple->SetData(seqHeapVar->context->GetItem());
+				cTuple *tuple = TransportItemFixLen(heapTuple, indexSD, indexColumnPosition, indexType);
+
+				int a = tuple->GetInt(0, indexSD);
+
+				index->mIndex->Insert(*tuple, LoadIndexData(seqHeapVar->context->GetNode()->GetIndex(), seqHeapVar->context->GetPosition()));
+			} while (seqHeapVar->mSeqArray->Advance(seqHeapVar->context));
+
+			seqHeapVar->mSeqArray->CloseContext(seqHeapVar->context);
+
+			return true;
+		}
+			
+			
 	}
 	else
 	{
@@ -938,54 +907,55 @@ inline bool cTable::ConstructVarlenHomoIndexBTree(string indexName, cDataType * 
 	return true;
 }
 
-inline bool cTable::ConstructVarlenIndexBTree(string indexName, cDataType * indexType, cSpaceDescriptor * indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, const uint inMemCacheSize, cQuickDB * quickDB)
-{
-	cNTuple *ntp = new cNTuple(indexKeyColumnSD);
-	
-	cHNTuple *tp = new cHNTuple();
-	tp->Resize(indexSD);
-	//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
-	unsigned int v2 = indexSD->GetSize();
-	unsigned int length = tp->GetLength();
-	unsigned int typeSize = indexSD->GetTypeSize();
-
-
-	cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, dsMode, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
-
-
-	if (index != NULL)
-	{
-		for (int i = 1; i <= vHeap.size(); i++)
-		{
-
-			cHNTuple *heapTuple = (cHNTuple*)vHeap.at(i - 1);
-
-
-			cHNTuple *tuple = TransportItemVarLen(heapTuple, indexKeyColumnSD, indexSD, indexColumnPosition, indexType);
-
-			tuple->SetValue(1, i - 1, indexSD);
-
-
-			index->mIndex->Insert(*tuple, tuple->GetData());
-
-
-
-		}
-		indexesVarLenBTree->push_back(index);
-		return true;
-	}
-	else
-	{
-		printf("Index: creation failed!\n");
-		return false;
-	}
-
-	return true;
-}
+//inline bool cTable::ConstructVarlenIndexBTree(string indexName, cDataType * indexType, cSpaceDescriptor * indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms, const uint inMemCacheSize, cQuickDB * quickDB)
+//{
+//	cNTuple *ntp = new cNTuple(indexKeyColumnSD);
+//	
+//	cHNTuple *tp = new cHNTuple();
+//	tp->Resize(indexSD);
+//	//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
+//	unsigned int v2 = indexSD->GetSize();
+//	unsigned int length = tp->GetLength();
+//	unsigned int typeSize = indexSD->GetTypeSize();
+//
+//
+//	cCompleteBTree<cHNTuple>*index = new cCompleteBTree<cHNTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, dsMode, cDStructConst::BTREE, compressionRatio, codeType, runtimeMode, histograms, inMemCacheSize, quickDB);
+//
+//
+//	if (index != NULL)
+//	{
+//		for (int i = 1; i <= vHeap.size(); i++)
+//		{
+//
+//			cHNTuple *heapTuple = (cHNTuple*)vHeap.at(i - 1);
+//
+//
+//			cHNTuple *tuple = TransportItemVarLen(heapTuple, indexKeyColumnSD, indexSD, indexColumnPosition, indexType);
+//
+//			tuple->SetValue(1, i - 1, indexSD);
+//
+//
+//			index->mIndex->Insert(*tuple, tuple->GetData());
+//
+//
+//
+//		}
+//		indexesVarLenBTree->push_back(index);
+//		return true;
+//	}
+//	else
+//	{
+//		printf("Index: creation failed!\n");
+//		return false;
+//	}
+//
+//	return true;
+//}
 
 inline bool cTable::ConstructFixIndexRtree(string indexName, cDataType * indexType, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB)
 {
-	cCompleteRTree<cTuple> *index = new cCompleteRTree<cTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize(), sizeof(indexType)/*indexSD->GetSize()*/, false, dsMode, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
+	unsigned int sizeOfData = sizeof(uint) + sizeof(short);
+	cCompleteRTree<cTuple> *index = new cCompleteRTree<cTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize(), sizeOfData, false, dsMode, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 
 
 	if (index != NULL)
@@ -994,15 +964,22 @@ inline bool cTable::ConstructFixIndexRtree(string indexName, cDataType * indexTy
 		{
 			int size = vHeap.size();
 
-			cTuple *heapTuple = (cTuple*)vHeap.at(i - 1);
+			seqHeapFix->mSeqArray->OpenContext(seqHeapFix->mHeader->GetFirstNodeIndex(), 0, seqHeapFix->context);
+			do
+			{
 
-			cTuple *tuple = TransportItemFixLen(heapTuple, indexSD, indexColumnPosition, indexType);
-			tuple->SetValue(1, i - 1, indexSD);
+				cTuple *heapTuple = new cTuple(indexSD);
+				heapTuple->SetData(seqHeapFix->context->GetItem());
+				cTuple *tuple = TransportItemFixLen(heapTuple, indexSD, indexColumnPosition, indexType);
 
+				int a = tuple->GetInt(0, indexSD);
 
-			index->mIndex->Insert(*tuple, tuple->GetData());
+				index->mIndex->Insert(*tuple, LoadIndexData(seqHeapFix->context->GetNode()->GetIndex(), seqHeapFix->context->GetPosition()));
+			} while (seqHeapFix->mSeqArray->Advance(seqHeapFix->context));
+
+			seqHeapFix->mSeqArray->CloseContext(seqHeapFix->context);
 		}
-		indexesFixLenRTree->push_back(index);
+
 		return true;
 	}
 	else
@@ -1057,50 +1034,82 @@ inline bool cTable::ConstructVarlenHomoIndexRTree(string indexName, cDataType * 
 	return true;
 }
 
-inline bool cTable::ConstructVarlenIndexRTree(string indexName, cDataType * indexType, cSpaceDescriptor * indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB)
+//inline bool cTable::ConstructVarlenIndexRTree(string indexName, cDataType * indexType, cSpaceDescriptor * indexKeyColumnSD, int indexColumnPosition, uint blockSize, cSpaceDescriptor * indexSD, uint dsMode,  uint compressionRatio, unsigned int codeType, unsigned int runtimeMode, bool histograms,  cQuickDB * quickDB)
+//{
+//	cNTuple *ntp = new cNTuple(indexKeyColumnSD);
+//	
+//	cHNTuple *tp = new cHNTuple();
+//	tp->Resize(indexSD);
+//	//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
+//	unsigned int v2 = indexSD->GetSize();
+//	unsigned int length = tp->GetLength();
+//	unsigned int typeSize = indexSD->GetTypeSize();
+//
+//
+//	cCompleteRTree<cHNTuple>*index = new cCompleteRTree<cHNTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, dsMode, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
+//
+//
+//	if (index != NULL)
+//	{
+//		for (int i = 1; i <= vHeap.size(); i++)
+//		{
+//
+//			cHNTuple *heapTuple = (cHNTuple*)vHeap.at(i - 1);
+//
+//
+//			cHNTuple *tuple = TransportItemVarLen(heapTuple, indexKeyColumnSD, indexSD, indexColumnPosition, indexType);
+//
+//			tuple->SetValue(1, i - 1, indexSD);
+//
+//
+//		//	index->mIndex->Insert(*tuple, tuple->GetData());
+//
+//
+//
+//		}
+//		indexesVarLenRTree->push_back(index);
+//		return true;
+//	}
+//	else
+//	{
+//		printf("Index: creation failed!\n");
+//		return false;
+//	}
+//
+//	return true;
+//
+//}
+
+inline char * cTable::LoadIndexData(unsigned int nodeId, unsigned int position)
 {
-	cNTuple *ntp = new cNTuple(indexKeyColumnSD);
-	
-	cHNTuple *tp = new cHNTuple();
-	tp->Resize(indexSD);
-	//unsigned int v1 = tp->GetSize(keySD); tohle určitě ne moc velké
-	unsigned int v2 = indexSD->GetSize();
-	unsigned int length = tp->GetLength();
-	unsigned int typeSize = indexSD->GetTypeSize();
+	ushort x = (short)position;
+	uint y = nodeId;
+
+	char * data = static_cast<char*>(static_cast<void*>(&x));
+	char * data2 = static_cast<char*>(static_cast<void*>(&y));
+	char *datas[] = { data, data2 };
+	char sizes[] = { sizeof x, sizeof y };
+	char bytes[6];
+	cDataType *types[] = { new cUShort(),new cUInt() };
 
 
-	cCompleteRTree<cHNTuple>*index = new cCompleteRTree<cHNTuple>(indexName.c_str(), indexColumnPosition, blockSize, indexSD, indexSD->GetTypeSize()/*tp->GetSize(keySD)*/, sizeof(ntp) /*keySD->GetSize()*/, true, dsMode, cDStructConst::RTREE, compressionRatio, codeType, runtimeMode, histograms, quickDB);
 
-
-	if (index != NULL)
+	for (size_t i = 0; i < 2; i++)
 	{
-		for (int i = 1; i <= vHeap.size(); i++)
+		int offset = 0;
+		for (size_t k = 0; k < i; k++)
 		{
-
-			cHNTuple *heapTuple = (cHNTuple*)vHeap.at(i - 1);
-
-
-			cHNTuple *tuple = TransportItemVarLen(heapTuple, indexKeyColumnSD, indexSD, indexColumnPosition, indexType);
-
-			tuple->SetValue(1, i - 1, indexSD);
-
-
-		//	index->mIndex->Insert(*tuple, tuple->GetData());
-
-
-
+			offset += types[k]->GetSize();
 		}
-		indexesVarLenRTree->push_back(index);
-		return true;
-	}
-	else
-	{
-		printf("Index: creation failed!\n");
-		return false;
+		for (size_t j = 0; j < types[i]->GetSize(); j++)
+		{
+			char * tmp = datas[i];
+
+			bytes[i *  offset + j] = tmp[j];
+		}
 	}
 
-	return true;
-
+	return bytes;
 }
 
 

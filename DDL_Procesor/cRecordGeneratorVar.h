@@ -75,7 +75,7 @@ inline cNTuple* cRecordGeneratorVar::GenerateVarchar(int size, cSpaceDescriptor 
 {
 	
 	int randNumber;
-	srand(time(NULL));
+	//srand(time(NULL));
 	cNTuple * varcharTuple = new cNTuple(sd);
 
 	for (int i = 0; i < size / 2; i++)
@@ -93,7 +93,7 @@ inline cNTuple* cRecordGeneratorVar::GenerateVarchar(int size, cSpaceDescriptor 
 inline int cRecordGeneratorVar::GenerateInt()
 {
 	int randNumber;
-	srand(time(NULL));
+	//srand(time(NULL));
 	
 	randNumber = rand() % 94 + 20;
 	

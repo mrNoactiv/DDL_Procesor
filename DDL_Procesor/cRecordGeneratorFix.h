@@ -7,13 +7,14 @@ public:
 	std::vector<cColumn*>*columns;
 	cSpaceDescriptor *columnSD;
 
+	int index = 0;
 
 
 	cRecordGeneratorFix(vector<cColumn*>*mColumns, cSpaceDescriptor *cSD);
 	bool LoadGenerator(vector<cColumn*>*mColumns, cSpaceDescriptor *cSD);
 	cTuple* CreateNewRecord();
 	cNTuple* GenerateVarchar(int size, cSpaceDescriptor *sd);
-	int GenerateInt();
+	static int GenerateInt();
 };
 
 
@@ -36,7 +37,7 @@ inline cTuple* cRecordGeneratorFix::CreateNewRecord()
 {
 	cTuple* record = new cTuple(columnSD);
 
-	int index = 0;
+	
 
 	
 
@@ -53,7 +54,8 @@ inline cTuple* cRecordGeneratorFix::CreateNewRecord()
 			}
 			else
 			{
-				record->SetValue(i, GenerateInt(), columnSD);
+				int genInt = GenerateInt();
+				record->SetValue(i, genInt, columnSD);
 			}
 
 		}
@@ -80,7 +82,7 @@ inline cNTuple* cRecordGeneratorFix::GenerateVarchar(int size, cSpaceDescriptor 
 {
 
 	int randNumber;
-	srand(time(NULL));
+	//srand(time(NULL));
 	cNTuple * varcharTuple = new cNTuple(sd);
 
 	for (int i = 0; i < size / 2; i++)
@@ -98,9 +100,10 @@ inline cNTuple* cRecordGeneratorFix::GenerateVarchar(int size, cSpaceDescriptor 
 inline int cRecordGeneratorFix::GenerateInt()
 {
 	int randNumber;
-	srand(time(NULL));
+	//srand(time(NULL));
 
-	randNumber = rand() % 156+65;
+	randNumber = rand() % 100+65;
+	
 
 	return randNumber;
 }

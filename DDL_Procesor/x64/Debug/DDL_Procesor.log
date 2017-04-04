@@ -97,53 +97,40 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\data\cdatacollection.h
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\data\cdatacollection.h(146): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(289): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(307): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(328): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(357): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(294): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(312): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(333): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctranslatorcreate.h(362): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(13): warning C4042: 'INMEMCACHE_SIZE': has bad storage class
   d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(16): note: see reference to class template instantiation 'cCompleteBTree<TKey>' being compiled
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(14): warning C4042: 'INMEMCACHE_SIZE': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(18): warning C4042: 'inMemCacheSize': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(24): warning C4042: 'INMEMCACHE_SIZE': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorvar.h(44): warning C4101: 'positionInTable': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorvar.h(78): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorvar.h(96): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorfix.h(44): warning C4101: 'positionInTable': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorfix.h(83): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorfix.h(101): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(65): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorfix.h(45): warning C4101: 'positionInTable': unreferenced local variable
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(66): warning C4042: 'inMemCacheSize': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(67): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(81): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(99): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(296): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(373): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(405): warning C4800: 'cDataType **': forcing value to bool 'true' or 'false' (performance warning)
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(405): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(420): warning C4800: 'cDataType **': forcing value to bool 'true' or 'false' (performance warning)
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(420): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(455): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(470): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(489): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(504): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(442): warning C4101: 'position': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(442): warning C4101: 'nodeid': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(527): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(547): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(569): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(586): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(514): warning C4101: 'position': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(514): warning C4101: 'nodeid': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(742): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(789): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(819): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(854): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(861): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(874): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(995): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(68): warning C4042: 'structure': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(68): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(83): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(100): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(318): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(364): warning C4042: 'structure': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(364): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(396): warning C4800: 'cDataType **': forcing value to bool 'true' or 'false' (performance warning)
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(396): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(411): warning C4800: 'cDataType **': forcing value to bool 'true' or 'false' (performance warning)
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(411): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(465): warning C4101: 'position': unreferenced local variable
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(465): warning C4101: 'nodeid': unreferenced local variable
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(647): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(724): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(759): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(791): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(798): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(965): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ddl_procesor.cpp(16): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ddl_procesor.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'common::uint', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ddl_procesor.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'common::uint', possible loss of data
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(137): warning C4018: '<': signed/unsigned mismatch
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(136): note: while compiling class template member function 'const char cArray<char>::operator [](const int) const'
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\cstring.h(119): note: see reference to function template instantiation 'const char cArray<char>::operator [](const int) const' being compiled
@@ -175,7 +162,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\b+tree\ccommonb
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(507): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(458): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -255,97 +242,83 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreeitems
               TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1126): warning C4018: '>=': signed/unsigned mismatch
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1097): note: while compiling class template member function 'bool dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::FindMbr_Ordered(const common::datatype::tuple::cHNTuple &,unsigned int &,const dstruct::paged::rtree::cRTreeOrderIndex<TKey> *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1097): note: while compiling class template member function 'bool dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::FindMbr_Ordered(const common::datatype::tuple::cTuple &,unsigned int &,const dstruct::paged::rtree::cRTreeOrderIndex<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(224): note: see reference to function template instantiation 'bool dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::FindMbr_Ordered(const common::datatype::tuple::cHNTuple &,unsigned int &,const dstruct::paged::rtree::cRTreeOrderIndex<TKey> *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(224): note: see reference to function template instantiation 'bool dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::FindMbr_Ordered(const common::datatype::tuple::cTuple &,unsigned int &,const dstruct::paged::rtree::cRTreeOrderIndex<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(359): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::UpdateMbr(unsigned int,const char *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(359): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::UpdateMbr(unsigned int,const char *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(533): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::UpdateMbr(unsigned int,const char *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(446): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(401): note: while compiling class template member function 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(533): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::UpdateMbr(unsigned int,const char *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(446): note: see reference to function template instantiation 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(446): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtree.h(37): note: see reference to class template instantiation 'dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(401): note: while compiling class template member function 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(446): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTree<TKey>' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(460): note: see reference to function template instantiation 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)' being compiled
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtree.h(37): note: see reference to class template instantiation 'dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>' being compiled
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(460): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTree<TKey>' being compiled
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1474): warning C4018: '<': signed/unsigned mismatch
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1463): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::InsertTupleOrder(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> *,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> *,char *,const dstruct::paged::tNodeIndex &,dstruct::paged::rtree::cRTreeNodeHeader<TMbr> *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1463): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::InsertTupleOrder(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> *,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> *,char *,const dstruct::paged::tNodeIndex &,dstruct::paged::rtree::cRTreeNodeHeader<TMbr> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple,
-              TMbr=common::datatype::tuple::cMBRectangle<common::datatype::tuple::cHNTuple>
+              TMbr=common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(332): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::InsertTupleOrder(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> *,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> *,char *,const dstruct::paged::tNodeIndex &,dstruct::paged::rtree::cRTreeNodeHeader<TMbr> *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(332): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::InsertTupleOrder(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> *,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> *,char *,const dstruct::paged::tNodeIndex &,dstruct::paged::rtree::cRTreeNodeHeader<TMbr> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple,
-              TMbr=common::datatype::tuple::cMBRectangle<common::datatype::tuple::cHNTuple>
+              TMbr=common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1485): warning C4018: '<': signed/unsigned mismatch
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(333): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(330): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::Split_DivideMbr(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::core::cNodeBuffers<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(262): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::Split_DivideMbr(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::core::cNodeBuffers<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(1564): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::CreateMbr(char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *) const'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(104): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::CreateMbr(char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *) const' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(72): note: while compiling class template member function 'void dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::SplitLeafNode(TLeafNode *,const TKey &,dstruct::paged::tNodeIndex &,char *,dstruct::paged::rtree::cInsertBuffers<TKey> *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(72): note: while compiling class template member function 'void dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::SplitLeafNode(TLeafNode *,const TKey &,dstruct::paged::tNodeIndex &,char *,dstruct::paged::rtree::cInsertBuffers<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple,
-              TLeafNode=dstruct::paged::rtree::cRTreeLeafNode<common::datatype::tuple::cHNTuple>
+              TKey=common::datatype::tuple::cTuple,
+              TLeafNode=dstruct::paged::rtree::cRTreeLeafNode<common::datatype::tuple::cTuple>
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(475): note: see reference to function template instantiation 'void dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::SplitLeafNode(TLeafNode *,const TKey &,dstruct::paged::tNodeIndex &,char *,dstruct::paged::rtree::cInsertBuffers<TKey> *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(475): note: see reference to function template instantiation 'void dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::SplitLeafNode(TLeafNode *,const TKey &,dstruct::paged::tNodeIndex &,char *,dstruct::paged::rtree::cInsertBuffers<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple,
-              TLeafNode=dstruct::paged::rtree::cRTreeLeafNode<common::datatype::tuple::cHNTuple>
+              TKey=common::datatype::tuple::cTuple,
+              TLeafNode=dstruct::paged::rtree::cRTreeLeafNode<common::datatype::tuple::cTuple>
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreenode_ri.h(147): warning C4244: 'initializing': conversion from 'double' to 'common::ushort', possible loss of data
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreenode_ri.h(143): note: while compiling class template member function 'char *dstruct::paged::core::cTreeNode<TKey>::CreateSubNode(const char *,common::ushort,common::ushort)'
@@ -403,89 +376,65 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreenode_
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreenode_rebuild.h(951): warning C4800: 'dstruct::paged::core::sItemBuffers *': forcing value to bool 'true' or 'false' (performance warning)
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreenode_rebuild.h(960): warning C4018: '>=': signed/unsigned mismatch
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1253): warning C4018: '<=': signed/unsigned mismatch
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1145): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::Find2DisjMbrs(char *,int)'
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(444): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::Find2DisjMbrs(char *,int)' being compiled
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(434): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::SplitDisMbrs(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> &)'
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(382): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::SplitDisMbrs(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> &)' being compiled
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(375): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::Split(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> &)'
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(320): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>::Split(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>> &)' being compiled
-          with
-          [
-              TKey=common::datatype::tuple::cHNTuple
-          ]
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(1145): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::Find2DisjMbrs(char *,int)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(444): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::Find2DisjMbrs(char *,int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(434): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::SplitDisMbrs(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> &)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(382): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::SplitDisMbrs(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> &)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenode.h(375): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::Split(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> &)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree_insert.h(320): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>::Split(dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>> &)' being compiled
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(690): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(684): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::BuildTwoDisjNodes(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::rtree::cRTreeLeafNode<TKey> &,char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *,unsigned int,unsigned int)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(318): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::BuildTwoDisjNodes(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::rtree::cRTreeLeafNode<TKey> &,char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *,unsigned int,unsigned int)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(305): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::Split_CutLongest(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(253): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::Split_CutLongest(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(575): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(569): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::BuildTwoDisjNodes_ri(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::core::cNodeBuffers<TKey> *,dstruct::paged::core::cNodeBuffers<TKey> *,common::uint,common::uint)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(291): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::BuildTwoDisjNodes_ri(dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::rtree::cRTreeLeafNode<TKey> &,dstruct::paged::core::cNodeBuffers<TKey> *,dstruct::paged::core::cNodeBuffers<TKey> *,common::uint,common::uint)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(1139): warning C4244: '-=': conversion from 'float' to 'unsigned int', possible loss of data
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(1123): note: while compiling class template member function 'bool dstruct::paged::rtree::cRTreeLeafNode<TKey>::DivideMbr(char *,char *,unsigned int,dstruct::paged::core::cNodeBuffers<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(344): note: see reference to function template instantiation 'bool dstruct::paged::rtree::cRTreeLeafNode<TKey>::DivideMbr(char *,char *,unsigned int,dstruct::paged::core::cNodeBuffers<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(485): warning C4305: 'initializing': truncation from 'double' to 'float'
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(467): note: while compiling class template member function 'bool dstruct::paged::rtree::cRTreeLeafNode<TKey>::Split(char *,char *,unsigned int,unsigned int,common::datatype::tuple::tMbrSideSizeOrder *,char *,char *,char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(317): note: see reference to function template instantiation 'bool dstruct::paged::rtree::cRTreeLeafNode<TKey>::Split(char *,char *,unsigned int,unsigned int,common::datatype::tuple::tMbrSideSizeOrder *,char *,char *,char *,char *,dstruct::paged::core::cNodeBuffers<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(486): warning C4305: 'initializing': truncation from 'double' to 'float'
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(504): warning C4305: '-=': truncation from 'double' to 'float'
@@ -494,38 +443,38 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeord
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeorderindex.h(177): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeOrderIndex<TKey>::Init(dstruct::paged::rtree::cRTreeHeader<TKey> *,dstruct::paged::core::cQuickDB *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeorderindex.h(136): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeOrderIndex<TKey>::Init(dstruct::paged::rtree::cRTreeHeader<TKey> *,dstruct::paged::core::cQuickDB *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree.h(216): note: while compiling class template member function 'dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::~cCommonRTree(void)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\ccommonrtree.h(216): note: while compiling class template member function 'dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::~cCommonRTree(void)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtree.h(52): note: see reference to function template instantiation 'dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<TKey>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<TKey>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::~cCommonRTree(void)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtree.h(52): note: see reference to function template instantiation 'dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::~cCommonRTree(void)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtree.h(52): note: while compiling class template member function 'dstruct::paged::rtree::cRTree<TKey>::cRTree(void)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(39): note: see reference to function template instantiation 'dstruct::paged::rtree::cRTree<TKey>::cRTree(void)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(25): note: while compiling class template member function 'bool cCompleteRTree<common::datatype::tuple::cHNTuple>::SetRTree(const char *,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)'
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(20): note: see reference to function template instantiation 'bool cCompleteRTree<common::datatype::tuple::cHNTuple>::SetRTree(const char *,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(19): note: while compiling class template member function 'cCompleteRTree<common::datatype::tuple::cHNTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)'
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(232): note: see reference to function template instantiation 'cCompleteRTree<common::datatype::tuple::cHNTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(232): note: see reference to class template instantiation 'cCompleteRTree<common::datatype::tuple::cHNTuple>' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(25): note: while compiling class template member function 'bool cCompleteRTree<common::datatype::tuple::cTuple>::SetRTree(const char *,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(20): note: see reference to function template instantiation 'bool cCompleteRTree<common::datatype::tuple::cTuple>::SetRTree(const char *,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(19): note: while compiling class template member function 'cCompleteRTree<common::datatype::tuple::cTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)'
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(231): note: see reference to function template instantiation 'cCompleteRTree<common::datatype::tuple::cTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(231): note: see reference to class template instantiation 'cCompleteRTree<common::datatype::tuple::cTuple>' being compiled
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeorderindex.h(182): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: see declaration of 'strcat'
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeorderindex.h(185): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -598,7 +547,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\cmbrect
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(507): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(458): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -607,22 +556,22 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreelea
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(835): note: while compiling class template member function 'bool dstruct::paged::rtree::cRTreeLeafNode<TKey>::FindTwoDisjMbrs(char *,char *,char *,char *,unsigned int,unsigned int,unsigned int,float,dstruct::paged::core::cNodeBuffers<TKey> *)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(495): note: see reference to function template instantiation 'bool dstruct::paged::rtree::cRTreeLeafNode<TKey>::FindTwoDisjMbrs(char *,char *,char *,char *,unsigned int,unsigned int,unsigned int,float,dstruct::paged::core::cNodeBuffers<TKey> *)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(439): note: while compiling class template member function 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::SplitDivideMbr_pre(common::memdatstruct::cMemoryBlock **,char **,char **,char **)'
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(338): note: see reference to function template instantiation 'void dstruct::paged::rtree::cRTreeLeafNode<TKey>::SplitDivideMbr_pre(common::memdatstruct::cMemoryBlock **,char **,char **,char **)' being compiled
           with
           [
-              TKey=common::datatype::tuple::cHNTuple
+              TKey=common::datatype::tuple::cTuple
           ]
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeleafnode.h(850): warning C4244: '-=': conversion from 'float' to 'unsigned int', possible loss of data
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreenode_rebuild.h(589): warning C4018: '<': signed/unsigned mismatch
@@ -684,10 +633,9 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreeitems
           [
               TKey=cUInt
           ]
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(253): warning C4715: 'cTable::CreateTable': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(371): warning C4715: 'cTable::CreateIndex': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(436): warning C4715: 'cTable::CreateClusteredTable': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(307): warning C4715: 'common::datatype::tuple::cHNTuple::Equal': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(327): warning C4715: 'common::datatype::tuple::cHNTuple::Equal': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(279): warning C4715: 'cTable::CreateTable': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(362): warning C4715: 'cTable::CreateIndex': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1112): warning C4172: returning address of local variable or temporary: bytes
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(427): warning C4715: 'cTable::CreateClusteredTable': not all control paths return a value
   DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\x64\Debug\DDL_Procesor.exe
   DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\x64\Debug\DDL_Procesor.pdb (Full PDB)

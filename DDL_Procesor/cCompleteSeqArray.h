@@ -26,7 +26,7 @@ class cCompleteSeqArray
 public:
 	cSequentialArray<TKey> *mSeqArray;
 	cSequentialArrayHeader<TKey> *mHeader;
-
+	cSequentialArrayContext<TKey>* context;
 
 
 	cCompleteSeqArray(const char * uniqueName, const unsigned int blockSize, const unsigned int cacheSize, cSpaceDescriptor * sd, cQuickDB *quickDB);
@@ -43,6 +43,7 @@ inline cCompleteSeqArray<TKey>::cCompleteSeqArray(const char * uniqueName, const
 template<class TKey>
 inline bool cCompleteSeqArray<TKey>::setArray(const char * uniqueName, const unsigned int blockSize, const unsigned int cacheSize, cSpaceDescriptor *sd, cQuickDB *quickDB)
 {
+	context = new cSequentialArrayContext<TKey>();
 	mHeader = new cSequentialArrayHeader<TKey>(uniqueName, blockSize, sd, cDStructConst::DSMODE_DEFAULT);
 	//mHeader->SetCodeType(ELIAS_DELTA);asi zbytečné
 

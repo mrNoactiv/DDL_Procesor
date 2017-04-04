@@ -5,7 +5,7 @@
 #include "cColumn.h"
 
 
-enum TypeOfCreate { BTREE,RTREE, CLUSTERED_TABLE };
+enum TypeOfCreate { BTREE,RTREE, CLUSTERED_TABLE_BTREE, CLUSTERED_TABLE_RTREE};
 class cTranslatorCreate
 {
 public:
@@ -17,7 +17,7 @@ public:
 
 	cSpaceDescriptor * SD;
 	cSpaceDescriptor * keySD;
-	cDataType *keyType;
+	cDataType *keyDimensionType;
 	int keyPosition;
 	bool homogenous = true;
 	bool keyVarlen = false;
@@ -37,7 +37,7 @@ public:
 	//const char * GetTableName();
 	cSpaceDescriptor* CreateFixSpaceDescriptor();
 	cSpaceDescriptor* CreateVarSpaceDescriptor();
-	cSpaceDescriptor* CreateFixKeySpaceDescriptor();
+	cSpaceDescriptor* CreateKeySpaceDescriptor();
 	cSpaceDescriptor* CreateVarKeySpaceDescriptor();
 	cSpaceDescriptor* CreateColumnSpaceDescriptor(cDataType* type, int columnSize);
 	
@@ -216,11 +216,20 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 		}
 		else if (input.find("CLUSTERED_TABLE", position) == position || input.find("clustered_table", position) == position)
 		{
-			typeOfCreate = CLUSTERED_TABLE;
+			typeOfCreate = CLUSTERED_TABLE_BTREE;
+		}
+		else if (input.find("CLUSTERED_TABLE(RTREE)", position) == position || input.find("clustered_table(rtree)", position) == position)
+		{
+			typeOfCreate = CLUSTERED_TABLE_RTREE;
+		}
+		else if (input.find("CLUSTERED_TABLE(BTREE)", position) == position || input.find("clustered_table(btree)", position) == position)
+		{
+			typeOfCreate = CLUSTERED_TABLE_BTREE;
 		}
 		else
 		{
 			cout << "unknow structure" << endl;
+			cin.get();
 			exit(0);
 		}
 	}
@@ -230,12 +239,8 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 	
 
 
-	if (keyVarlen)
-	{
-		CreateVarKeySpaceDescriptor();
-	}
-	else
-		CreateFixKeySpaceDescriptor();
+
+		CreateKeySpaceDescriptor();
 
 
 	if (varlen)
@@ -367,55 +372,62 @@ inline cSpaceDescriptor * cTranslatorCreate::CreateVarSpaceDescriptor()
 	return SD;
 }
 
-inline cSpaceDescriptor * cTranslatorCreate::CreateFixKeySpaceDescriptor()
+inline cSpaceDescriptor * cTranslatorCreate::CreateKeySpaceDescriptor()
 {
 	/*
+
+		cDataType *typ = new cInt();
+		cDataType ** ptr;
+		ptr = new cDataType*[2];
+
+
+		for (int i = 0; i < columns->size(); i++)
+		{
+			if (columns->at(i)->primaryKey)
+			{
+				keyType = columns->at(i)->cType;
+				ptr[0] = keyType;
+			}
+		}
+
+		ptr[1] = new cInt();
+		keySD = new cSpaceDescriptor(2, new cTuple(), ptr, false);
+		*/
+
+
+		//cDataType *keyType;
+		//if (keyVarlen)
+		//	keyType = new cNTuple();
+		//else
+		//{
+		//	keyType = new cTuple();
+		//}
+
+	cSpaceDescriptor *columnSD;
 	for (int i = 0; i < columns->size(); i++)
 	{
 		if (columns->at(i)->primaryKey)
 		{
-			keyType = columns->at(i)->cType;
+			keyDimensionType = columns->at(i)->cType;
+			columnSD = columns->at(i)->columnSD;
 		}
 	}
-	keySD= new cSpaceDescriptor(1, new cTuple(), keyType, false);
-	*/
-	//nebo
+	keySD = new cSpaceDescriptor(1, new cTuple(), keyDimensionType, false);
 
-	cDataType *typ = new cInt();
-	cDataType ** ptr;
-	ptr = new cDataType*[2];
-
-
-	for (int i = 0; i < columns->size(); i++)
+	if (keyVarlen)
 	{
-		if (columns->at(i)->primaryKey)
-		{
-			keyType = columns->at(i)->cType;
-			ptr[0] = keyType;
-		}
-	}
-	
-	ptr[1] = new cInt();
-	keySD = new cSpaceDescriptor(2, new cTuple(), ptr, false);
 
-	
+		keySD->SetDimSpaceDescriptor(0, columnSD);
+		keySD->SetDimensionType(0, keyDimensionType);
+		keySD->Setup();
+	}
 	return keySD;
 }
 
 inline cSpaceDescriptor * cTranslatorCreate::CreateVarKeySpaceDescriptor()
 {
 
-	/*
-	for (int i = 0; i < columns->size(); i++)
-	{
-	if (columns->at(i)->primaryKey)
-	{
-	keyType = columns->at(i)->cType;
-	}
-	}
-	keySD= new cSpaceDescriptor(1, new cTuple(), keyType, false);
-	*/
-	//nebo
+
 
 	cDataType *typ = new cInt();
 	cDataType ** ptr;
@@ -427,8 +439,8 @@ inline cSpaceDescriptor * cTranslatorCreate::CreateVarKeySpaceDescriptor()
 	{
 		if (columns->at(i)->primaryKey)
 		{
-			keyType = columns->at(i)->cType;
-			ptr[0] = keyType;
+			keyDimensionType = columns->at(i)->cType;
+			ptr[0] = keyDimensionType;
 			columnSD = columns->at(i)->columnSD;
 		}
 	}

@@ -27,7 +27,7 @@ void cTypeOfTranslator::SetType(string input)
 	
 	std::transform(input.begin(), input.end(), input.begin(), ::tolower);
 	
-	if ( input.find("create table", 0) == 0 )
+	if ( input.find("create table", 0) == 0 || input.find("CREATE TABLE", 0) == 0)
 	{
 		if (input.find("option:btree") != std::string::npos) {
 			std::cout << "btree" << '\n';
@@ -44,7 +44,6 @@ void cTypeOfTranslator::SetType(string input)
 		}
 		else
 		{
-			std::cout << "no option found. btree created" << '\n';
 			type = CREATE;
 		}
 		

@@ -126,39 +126,39 @@ int main()
 	cTable *table5 = NULL;
 
 
-	
-	/*string query1 = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) OPTION:BTREE";
+	/*nejde*/
+	string query1 = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) OPTION:BTREE";
 	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	query1 = "create index index_name ON ahoj(AGE)";
 	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
-	table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();*/
+	table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
 
 
-	/*
-	string query2 = "create table ahoj2(ID INT PRIMARY KEY,AGE INT NOT NULL,length INT NOT NULL,weight INT NOT NULL) OPTION:MD_TABLE";
-	table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	query2 = "create index index_name2 ON ahoj2(AGE)";
-	table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	*/
+	/*jede pro oba*/
+	//string query2 = "create table ahoj2(ID INT PRIMARY KEY,AGE INT NOT NULL,length INT NOT NULL,weight INT NOT NULL) OPTION:BTREE";
+	//table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//query2 = "create index index_name2 ON ahoj2(AGE)";
+	//table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	
 
 
-	string query3 = "create table ahoj3(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) OPTION:MD_TABLE";
-	table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	query3 = "create index index_name3 ON ahoj3(AGE)";
-	table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//string query3 = "create table ahoj3(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) OPTION:BTREE";
+	//table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//query3 = "create index index_name3 ON ahoj3(AGE)";
+	//table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
-	/*
-	string query4 = "create table ahoj4(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) OPTION:BTREE";
-	table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	query4 = "create index index_name4 ON ahoj4(AGE)";
-	table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	/*(implicitKeyVarlen && homogenous) BTREE funguje;*/
+	//string query4 = "create table ahoj4(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) OPTION:BTREE";
+	//table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//query4 = "create index index_name4 ON ahoj4(AGE)";
+	//table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
-	string query5 = "create table ahoj5(ID INT NOT NULL,AGE VARCHAR(10) PRIMARY KEY) OPTION:BTREE";
-	table5 = ValidationTest(table5, query5, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	*/
+	/*tring query5 = "create table ahoj5(ID INT NOT NULL,AGE VARCHAR(10) PRIMARY KEY) OPTION:BTREE";
+	table5 = ValidationTest(table5, query5, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);*/
+	
 	
 	/*
 	cTable *table5 = NULL;
@@ -218,11 +218,12 @@ cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsi
 		SD = table1->SD;
 
 		/*generování záznamů*/
-		if (table1->varlen && table1->homogenous == false)
+		if (((table1->implicitKeyVarlen && table1->varlenData) && table1->homogenous == false) || (table1->implicitKeyVarlen && table1->homogenous == false) || (table1->implicitKeyVarlen==false && table1->homogenous == false))
 		{
 			for (int i = 0; i < 1000; i++)
 			{
 				table1->SetValues(table1->varGen->CreateNewRecord(), SD);
+			
 			}
 		}
 		else

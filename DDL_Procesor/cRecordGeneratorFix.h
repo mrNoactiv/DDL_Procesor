@@ -102,7 +102,7 @@ inline int cRecordGeneratorFix::GenerateInt()
 	int randNumber;
 	//srand(time(NULL));
 
-	randNumber = rand() % 100+65;
+	randNumber = rand() % 100000;
 	
 
 	return randNumber;

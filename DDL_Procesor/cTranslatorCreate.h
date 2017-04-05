@@ -21,7 +21,7 @@ public:
 	int keyPosition;
 	bool homogenous = true;
 	bool keyVarlen = false;
-	bool varlen=false;
+	bool varlenData=false;
 	TypeOfCreate typeOfCreate;
 
 
@@ -68,7 +68,7 @@ inline void cTranslatorCreate::SetType(string input)
 */
 inline void cTranslatorCreate::TranlateCreate(string input)
 {
-	int positionInTable=0;
+	int positionInTable = 0;
 	string TEMPTable;
 	while (input.find("(", position) != position)//vyparsování názvu tabulky, dokud nenajde (
 	{
@@ -82,7 +82,7 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 	position++;
 
 	columns = new vector<cColumn*>();
-	cDataType *CheckType=NULL;
+	cDataType *CheckType = NULL;
 	//dataTypes = new vector<cDataType>();
 	do
 	{
@@ -103,11 +103,11 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 		}
 		column->positionInTable = positionInTable;//priřazení pozice v tabulce
 		positionInTable++;
-		
-		
+
+
 		std::reverse(column->name.begin(), column->name.end());//preklopení názvu sloupce
 		position++;
-		
+
 
 		bool withSize = false;
 
@@ -135,7 +135,7 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 				homogenous = true;
 		}
 
-		CheckType=column->cType;
+		CheckType = column->cType;
 
 
 		//position++;
@@ -151,10 +151,7 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 
 			std::reverse(TMPSize.begin(), TMPSize.end());//preklopení datového typu sloupce
 			column->size = std::stoi(TMPSize);
-			if (column->size > 0)
-			{
-				varlen = true;
-			}
+
 
 			column->columnSD = CreateColumnSpaceDescriptor(column->cType, column->size);
 			position++;
@@ -176,7 +173,7 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 			column->notNull = false;
 
 		}
-		if (input.find("PRIMARY KEY", position + 1) == position + 1 )
+		if (input.find("PRIMARY KEY", position + 1) == position + 1)
 		{
 			keyPosition = column->positionInTable;
 			column->primaryKey = true;
@@ -191,18 +188,22 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 		else
 		{
 			column->primaryKey = false;
+			if (column->size > 0)
+			{
+				varlenData = true;
+			}
 		}
 		columns->push_back(column);
-		
+
 		iteration++;
 
 
-		
-		
+
+
 
 	} while (input.find(")", position) != position);
 	position = position + 2;
-	if (input.find("OPTION:", position ) == position)
+	if (input.find("OPTION:", position) == position)
 	{
 		position = position + 7;
 
@@ -236,14 +237,14 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 	else
 		typeOfCreate = BTREE;
 
-	
 
 
 
-		CreateKeySpaceDescriptor();
+
+	CreateKeySpaceDescriptor();
 
 
-	if (varlen)
+	if (varlenData || keyVarlen)
 	{
 		CreateVarSpaceDescriptor();
 	}
@@ -252,6 +253,15 @@ inline void cTranslatorCreate::TranlateCreate(string input)
 		CreateFixSpaceDescriptor();
 
 	}
+	/*if (homogenous || (varlenData = false && keyVarlen == false))
+	{
+		CreateFixSpaceDescriptor();
+	}
+	else
+	{
+		CreateVarSpaceDescriptor();
+	}*/
+
 	
 }
 
@@ -396,7 +406,7 @@ inline cSpaceDescriptor * cTranslatorCreate::CreateKeySpaceDescriptor()
 
 
 		//cDataType *keyType;
-		//if (keyVarlen)
+		//if (implicitKeyVarlen)
 		//	keyType = new cNTuple();
 		//else
 		//{

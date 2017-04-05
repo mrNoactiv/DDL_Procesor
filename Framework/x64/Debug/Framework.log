@@ -75,9 +75,9 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreecon
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeconst.h(38): warning C4091: 'typedef ': ignored on left of 'Compression::Comp' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeconst.h(44): warning C4091: 'typedef ': ignored on left of 'Reduction::Reduce' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeconst.h(50): warning C4091: 'typedef ': ignored on left of 'Split::Splits' when no variable is declared
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(282): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(298): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(318): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(285): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(301): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(321): warning C4018: '<': signed/unsigned mismatch
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\cmbrectangle.h(51): warning C4091: 'typedef ': ignored on left of 'common::datatype::tuple::Processing::Compare' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\csignaturestorage.cpp(37): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
@@ -478,9 +478,9 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.h(2322): warning C4552: '<<': operator has no effect; expected operator with side-effect
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.h(2332): warning C4552: '<<': operator has no effect; expected operator with side-effect
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.h(2348): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(282): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(298): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(318): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(285): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(301): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(321): warning C4018: '<': signed/unsigned mismatch
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\cmbrectangle.h(51): warning C4091: 'typedef ': ignored on left of 'common::datatype::tuple::Processing::Compare' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\cnode.h(130): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\cmemorypool.h(110): warning C4244: '=': conversion from '__int64' to 'unsigned int', possible loss of data
@@ -698,9 +698,9 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreecon
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeconst.h(38): warning C4091: 'typedef ': ignored on left of 'Compression::Comp' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeconst.h(44): warning C4091: 'typedef ': ignored on left of 'Reduction::Reduce' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeconst.h(50): warning C4091: 'typedef ': ignored on left of 'Split::Splits' when no variable is declared
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(282): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(298): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(318): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(285): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(301): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(321): warning C4018: '<': signed/unsigned mismatch
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\cmbrectangle.h(51): warning C4091: 'typedef ': ignored on left of 'common::datatype::tuple::Processing::Compare' when no variable is declared
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(137): warning C4018: '<': signed/unsigned mismatch
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(136): note: while compiling class template member function 'const char cArray<char>::operator [](const int) const'
@@ -1544,9 +1544,9 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.h(2322): warning C4552: '<<': operator has no effect; expected operator with side-effect
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.h(2332): warning C4552: '<<': operator has no effect; expected operator with side-effect
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\ctuple.h(2348): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(282): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(298): warning C4018: '<': signed/unsigned mismatch
-d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(318): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(285): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(301): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\chntuple.h(321): warning C4018: '<': signed/unsigned mismatch
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(137): warning C4018: '<': signed/unsigned mismatch
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(136): note: while compiling class template member function 'const char cArray<char>::operator [](const int) const'
   d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\cstring.h(119): note: see reference to function template instantiation 'const char cArray<char>::operator [](const int) const' being compiled

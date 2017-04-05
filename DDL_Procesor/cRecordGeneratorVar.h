@@ -6,7 +6,7 @@ class cRecordGeneratorVar
 public:
 	std::vector<cColumn*>*columns;
 	cSpaceDescriptor *columnSD;
-
+	int index = 0;
 
 
 	cRecordGeneratorVar(vector<cColumn*>*mColumns,cSpaceDescriptor *cSD);
@@ -38,7 +38,7 @@ inline cHNTuple* cRecordGeneratorVar::CreateNewRecord()
 	
 	record->Resize(columnSD);
 	
-	int index = 0;
+	
 
 
 	int positionInTable;
@@ -83,7 +83,7 @@ inline cNTuple* cRecordGeneratorVar::GenerateVarchar(int size, cSpaceDescriptor 
 		randNumber = rand() % 94 + 20;
 		varcharTuple->SetValue(i, (char)randNumber, sd);
 	}
-
+	cout << endl;
 	
 	
 	return varcharTuple;
@@ -95,7 +95,7 @@ inline int cRecordGeneratorVar::GenerateInt()
 	int randNumber;
 	//srand(time(NULL));
 	
-	randNumber = rand() % 94 + 20;
+	randNumber = rand() % 10000000000;
 	
 	return randNumber;
 }

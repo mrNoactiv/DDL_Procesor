@@ -45,7 +45,7 @@ protected:
 	char mFilename[1024];
 	unsigned int mItemIndex;	  /// Auxiliary counter used during the read.
 	unsigned int mItemCount;	  /// Number of items in the stream array.
-	unsigned int mItemSize;     /// Size of the item, set 0 if it is a varlen item
+	unsigned int mItemSize;     /// Size of the item, set 0 if it is a varlenData item
 	unsigned int mLastItemSize; /// the size of the last item
 
 	// inline unsigned int GetSizeOfItem(char* item);

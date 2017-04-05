@@ -200,6 +200,9 @@ inline int cHNTuple::Equal(const char* tuple2, const cSpaceDescriptor* pSd) cons
 */
 /*static*/ void cHNTuple::SetNTuple(char *data, unsigned int order, const char* value, const cSpaceDescriptor* pSd)
 {
+	char* pokus1 = GetPValue(value, order, pSd);
+	char* pokus2 = GetPValue(data, order, pSd);
+
 	unsigned int delka_co = cNTuple::GetSize(GetPValue(value, order, pSd), pSd->GetDimSpaceDescriptor(order));
 	unsigned int delka_kam = cNTuple::GetSize(GetPValue(data, order, pSd), pSd->GetDimSpaceDescriptor(order));
 	unsigned int zacatek_posun = cHNTuple::GetSizePart(GetPValue(data, order, pSd), order, pSd);

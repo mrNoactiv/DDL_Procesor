@@ -457,7 +457,7 @@ int cCommonRTree<TMbr,TKey,TNode,TLeafNode>::Insert(const TKey &item, char* leaf
 				*/
 
 				ret = TNode::INSERT_NOSPACE;
-				if (currentLeafNode->HasLeafFreeSpace(item, NULL))
+				if (currentLeafNode->HasLeafFreeSpace(item, NULL))//gru0047 leaf data byly null wtf
 				{
 					ret = InsertIntoLeafNode(currentLeafNode, item, leafData, &insertBuffers);
 				}

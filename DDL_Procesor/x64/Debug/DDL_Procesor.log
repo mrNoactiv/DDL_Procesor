@@ -108,25 +108,32 @@ d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(18): warn
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletebtree.h(24): warning C4042: 'INMEMCACHE_SIZE': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorvar.h(44): warning C4101: 'positionInTable': unreferenced local variable
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\crecordgeneratorfix.h(45): warning C4101: 'positionInTable': unreferenced local variable
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(66): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(67): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(68): warning C4042: 'structure': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(68): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(83): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(100): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(318): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(364): warning C4042: 'structure': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(364): warning C4042: 'inMemCacheSize': has bad storage class
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(396): warning C4800: 'cDataType **': forcing value to bool 'true' or 'false' (performance warning)
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(396): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(414): warning C4800: 'cDataType **': forcing value to bool 'true' or 'false' (performance warning)
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(414): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(731): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(808): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(843): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(869): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(896): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(903): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(70): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(71): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(72): warning C4042: 'structure': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(72): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(92): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(109): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(335): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(381): warning C4042: 'structure': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(381): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(417): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(645): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(881): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(958): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(993): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1019): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1046): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1067): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1100): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1128): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1153): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1180): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1205): warning C4244: 'initializing': conversion from 'wchar_t' to 'char', possible loss of data
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1236): warning C4018: '<': signed/unsigned mismatch
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1256): warning C4042: 'inMemCacheSize': has bad storage class
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1480): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1520): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ddl_procesor.cpp(16): warning C4042: 'inMemCacheSize': has bad storage class
 d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ddl_procesor.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'common::uint', possible loss of data
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\memorystructures\carray.h(137): warning C4018: '<': signed/unsigned mismatch
@@ -160,7 +167,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\b+tree\ccommonb
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(475): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(549): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -258,7 +265,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenod
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(455): note: see reference to function template instantiation 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(529): note: see reference to function template instantiation 'int dstruct::paged::rtree::cCommonRTree<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>,TKey,dstruct::paged::rtree::cRTreeNode<common::datatype::tuple::cMBRectangle<common::datatype::tuple::cTuple>>,dstruct::paged::rtree::cRTreeLeafNode<TKey>>::Insert(const TKey &,char *)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -268,7 +275,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreenod
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(455): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTree<TKey>' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(529): note: see reference to class template instantiation 'dstruct::paged::rtree::cRTree<TKey>' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -471,8 +478,8 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeord
   d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(25): note: while compiling class template member function 'bool cCompleteRTree<common::datatype::tuple::cTuple>::SetRTree(const char *,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)'
   d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(20): note: see reference to function template instantiation 'bool cCompleteRTree<common::datatype::tuple::cTuple>::SetRTree(const char *,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
   d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ccompletertree.h(19): note: while compiling class template member function 'cCompleteRTree<common::datatype::tuple::cTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)'
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(227): note: see reference to function template instantiation 'cCompleteRTree<common::datatype::tuple::cTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(227): note: see reference to class template instantiation 'cCompleteRTree<common::datatype::tuple::cTuple>' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(244): note: see reference to function template instantiation 'cCompleteRTree<common::datatype::tuple::cTuple>::cCompleteRTree(const char *,int,common::uint,common::datatype::tuple::cSpaceDescriptor *,common::uint,common::uint,bool,common::uint,common::uint,common::uint,unsigned int,unsigned int,bool,dstruct::paged::core::cQuickDB *)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(244): note: see reference to class template instantiation 'cCompleteRTree<common::datatype::tuple::cTuple>' being compiled
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeorderindex.h(182): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(90): note: see declaration of 'strcat'
 d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\rtree\crtreeorderindex.h(185): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -545,7 +552,7 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\common\datatype\tuple\cmbrect
           [
               TKey=common::datatype::tuple::cTuple
           ]
-  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(475): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
+  d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(549): note: see reference to function template instantiation 'bool dstruct::paged::bptree::cCommonBpTree<dstruct::paged::bptree::cBpTreeNode<TKey>,dstruct::paged::bptree::cBpTreeNode<TKey>,TKey>::Insert(const TKey &,char *,unsigned int)' being compiled
           with
           [
               TKey=common::datatype::tuple::cTuple
@@ -631,9 +638,9 @@ d:\skola\bakalarka\aplikace\ddl_procesor\framework\dstruct\paged\core\ctreeitems
           [
               TKey=cUInt
           ]
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(277): warning C4715: 'cTable::CreateTable': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(362): warning C4715: 'cTable::CreateIndex': not all control paths return a value
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1291): warning C4172: returning address of local variable or temporary: bytes
-d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(431): warning C4715: 'cTable::CreateClusteredTable': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(294): warning C4715: 'cTable::CreateTable': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(379): warning C4715: 'cTable::CreateIndex': not all control paths return a value
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(1661): warning C4172: returning address of local variable or temporary: bytes
+d:\skola\bakalarka\aplikace\ddl_procesor\ddl_procesor\ctable.h(505): warning C4715: 'cTable::CreateClusteredTable': not all control paths return a value
   DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\x64\Debug\DDL_Procesor.exe
   DDL_Procesor.vcxproj -> D:\skola\bakalarka\Aplikace\DDL_Procesor\x64\Debug\DDL_Procesor.pdb (Full PDB)

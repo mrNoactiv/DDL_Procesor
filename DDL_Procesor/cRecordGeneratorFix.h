@@ -56,6 +56,7 @@ inline cTuple* cRecordGeneratorFix::CreateNewRecord()
 			{
 				int genInt = GenerateInt();
 				record->SetValue(i, genInt, columnSD);
+				cout << "number " << i << " int is " << genInt << endl;
 			}
 
 		}

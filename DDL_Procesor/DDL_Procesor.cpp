@@ -26,7 +26,7 @@ int main()
 	char sizes[] = { sizeof x, sizeof y };
 	char bytes[6];
 	cDataType *types[] = { new cUShort(),new cUInt() };
-	
+
 
 
 	cSpaceDescriptor *ajujiaji = new cSpaceDescriptor(2, NULL, types);
@@ -50,18 +50,18 @@ int main()
 			bytes[i *  offset + j] = tmp[j];
 		}
 	}
-	
+
 	for (size_t i = 0; i < 6; i++)
 	{
 		printf("%d\n", bytes[i]);
 	}
-	
 
 
-	
+
+
 
 		return 0;*/
-	/*proměnné*/
+		/*proměnné*/
 	char dbPath[1024] = "quickdb";
 	uint CACHE_SIZE = 20000;
 	uint BLOCK_SIZE = 2048 /*8192*/;
@@ -102,10 +102,12 @@ int main()
 	/*BpTreeHeader<TKey>::cBpTreeHeader(const char* uniqueName, uint blockSize, cDTDescriptor *dd, uint keySize, uint dataSize,  bool variableLenData, uint dsMode, uint treeCode, uint compressionRatio)*/
 
 
+	cDataType *a[] = { new cInt,new cShort() };
 
 
+	cSpaceDescriptor *playSD = new cSpaceDescriptor(2, new cTuple(),a,false);
 
-	unsigned int a = sizeof(cDataType);
+	unsigned int play = playSD->GetSize();
 
 	mQuickDB = new cQuickDB();
 	if (!mQuickDB->Create(dbPath, CACHE_SIZE, MAX_NODE_INMEM_SIZE, BLOCK_SIZE))
@@ -125,22 +127,22 @@ int main()
 	cTable *table4 = NULL;
 	cTable *table5 = NULL;
 
+	/*btree testy*/
 
-	/*nejde*/
-	string query1 = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) OPTION:BTREE";
-	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	query1 = "create index index_name ON ahoj(AGE)";
-	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//string query1 = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(20) NOT NULL) OPTION:BTREE";
+	//table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//query1 = "create index index_name ON ahoj(AGE)";
+	//table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
-	table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
+	//table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
 
 
-	/*jede pro oba*/
+	///*jede pro oba*/
 	//string query2 = "create table ahoj2(ID INT PRIMARY KEY,AGE INT NOT NULL,length INT NOT NULL,weight INT NOT NULL) OPTION:BTREE";
 	//table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	//query2 = "create index index_name2 ON ahoj2(AGE)";
 	//table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	
+	//
 
 
 	//string query3 = "create table ahoj3(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) OPTION:BTREE";
@@ -149,23 +151,44 @@ int main()
 	//table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
-	/*(implicitKeyVarlen && homogenous) BTREE funguje;*/
+
 	//string query4 = "create table ahoj4(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(10) NOT NULL) OPTION:BTREE";
 	//table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	//query4 = "create index index_name4 ON ahoj4(AGE)";
 	//table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 
 
-	/*tring query5 = "create table ahoj5(ID INT NOT NULL,AGE VARCHAR(10) PRIMARY KEY) OPTION:BTREE";
-	table5 = ValidationTest(table5, query5, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);*/
+	/*clustered btree testy*/
 	
+	/*nejde*/
+	string query1 = "create table ahoj(ID INT PRIMARY KEY,AGE VARCHAR(50) NOT NULL) OPTION:CLUSTERED_TABLE(BTREE)";
+	table1 = ValidationTest(table1, query1, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
 	
-	/*
-	cTable *table5 = NULL;
+	table1->indexesFixLenBTree->at(0)->mIndex->PrintInfo();
 
-	 string query5 = "create table ahoj5(ID INT PRIMARY KEY,AGE INT NOT NULL) OPTION:CLUSTERED_TABLE";
-	 table2 = ValidationTest(table5, query5, mQuickDB, BLOCK_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
-	*/
+
+	///*jede pro oba*/
+	//string query2 = "create table ahoj2(ID INT PRIMARY KEY,AGE INT NOT NULL,length INT NOT NULL,weight INT NOT NULL) OPTION:BTREE";
+	//table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//query2 = "create index index_name2 ON ahoj2(AGE)";
+	//table2 = ValidationTest(table2, query2, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+	//
+
+
+	//string query3 = "create table ahoj3(ID VARCHAR(35) PRIMARY KEY,AGE INT NOT NULL) OPTION:CLUSTERED_TABLE(BTREE)";
+	//table3 = ValidationTest(table3, query3, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+
+
+
+
+	//string query4 = "create table ahoj4(ID VARCHAR(20) PRIMARY KEY,AGE VARCHAR(40) NOT NULL) OPTION:CLUSTERED_TABLE(BTREE)";
+	//table4 = ValidationTest(table4, query4, mQuickDB, BLOCK_SIZE, CACHE_SIZE, DSMODE, COMPRESSION_RATIO, CODETYPE, RUNTIME_MODE, HISTOGRAMS, INMEMCACHE_SIZE);
+
+	
+	
+	
+
+	
 
 
 
@@ -223,6 +246,7 @@ cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsi
 			for (int i = 0; i < 1000; i++)
 			{
 				table1->SetValues(table1->varGen->CreateNewRecord(), SD);
+				cout << "value " << i << "inserted" << endl;
 			
 			}
 		}
@@ -231,6 +255,7 @@ cTable* ValidationTest(cTable *table,string query, cQuickDB * quckdb, const unsi
 			for (int i = 0; i < 1000; i++)
 			{
 				table1->SetValues(table1->fixGen->CreateNewRecord(), SD);
+				
 			}
 		}
 
